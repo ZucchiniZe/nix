@@ -56,7 +56,12 @@ in
     };
   };
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      nix = "noglob nix";
+    };
+  };
 
   # Enable passwordless sudo.
   security.sudo.extraRules = [
