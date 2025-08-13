@@ -7,7 +7,13 @@
 }:
 
 let
-  vars = import ./vars.nix;
+  vars = {
+    hostname = "heat";
+    username = "alex";
+    sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPBRWC7uEA0ysNzYHMERozjdRuPUSD5kgwwmDH6DHmr";
+    locale = "en_US.UTF-8";
+    timezone = "America/Los_Angeles";
+  };
 in
 {
   imports = [
