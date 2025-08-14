@@ -19,7 +19,11 @@ in
   imports = [
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
-    ../../users/alex.nix
+    {
+      home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.users.alex = ../../users/alex.nix;
+    }
     inputs.disko.nixosModules.disko
     ./disk-config.nix
   ];
