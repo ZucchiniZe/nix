@@ -21,13 +21,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      nix = "noglob nix";
-    };
-  };
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;

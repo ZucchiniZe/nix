@@ -62,6 +62,13 @@ in
     };
   };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      nix = "noglob nix";
+    };
+  };
+
   # Enable passwordless sudo.
   security.sudo.extraRules = [
     {
@@ -119,5 +126,5 @@ in
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "24.11"; # Did you read the comment?
+  system.stateVersion = "25.05"; # Did you read the comment?
 }
