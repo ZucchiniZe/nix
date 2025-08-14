@@ -36,13 +36,35 @@ in
         efiSysMountPoint = "/boot";
       };
     };
+    kernelParams = [ "net.ifnames=0" ];
     initrd.systemd.enable = true;
   };
 
   systemd.targets.multi-user.enable = true;
 
-  networking.hostName = vars.hostname;
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = vars.hostname;
+    defaultGateway = "10.0.0.1";
+    interfaces.eth0 = {
+      ipv4.addresses = [
+        {
+          # Use IP address configured in the Oracle Cloud web interface
+          address = "10.0.0.90";
+          prefixLength = 24;
+        }
+      ];
+      # Only "required" for IPv6, can be false if only IPv4 is needed
+      useDHCP = true;
+    };
+    # Note: you also need to configure open ports in the Oracle Cloud web interface
+    # (Virtual Cloud Network -> Security Lists -> Ingress Rules)
+    firewall = {
+      # (both optional)
+      logRefusedConnections = false;
+      rejectPackets = true;
+    };
+    networkmanager.enable = true;
+  };
 
   time.timeZone = vars.timezone;
   i18n.defaultLocale = vars.locale;
