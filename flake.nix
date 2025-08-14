@@ -25,7 +25,7 @@
         heat = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/heat/configuration.nix ];
+          modules = [ ./hosts/heat ];
         };
 
         # ab-m4mbp =

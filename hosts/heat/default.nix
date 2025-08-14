@@ -18,6 +18,8 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.home-manager
+    ../../users/alex.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
   ];
@@ -53,13 +55,6 @@ in
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ vars.sshKey ];
-    };
-  };
-
-  programs.zsh = {
-    enable = true;
-    shellAliases = {
-      nix = "noglob nix";
     };
   };
 
