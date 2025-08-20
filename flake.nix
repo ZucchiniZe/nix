@@ -11,12 +11,17 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-darwin = {
+      url = "github:nix-community/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nix-darwin,
       ...
     }@inputs:
     {
@@ -26,8 +31,14 @@
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/heat ];
         };
+      };
 
-        # ab-m4mbp =
+      darwinConfigurations = {
+        "m4-mbp" = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/m4-mbp ];
+        };
       };
     };
 }
