@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    deploy-rs.url = "github:serokell/deploy-rs";
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +23,7 @@
       self,
       nixpkgs,
       nix-darwin,
+      deploy-rs,
       ...
     }@inputs:
     {
@@ -40,5 +42,17 @@
           modules = [ ./hosts/m4-mbp ];
         };
       };
+
+      deploy.nodes.heat = {
+        hostname = "heat";
+        profiles.system = {
+          sshUser = "alex";
+          path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.heat;
+          user = "alex";
+          remoteBuild = true;
+        };
+      };
+
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }
