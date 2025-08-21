@@ -49,7 +49,7 @@ in
       ipv4.addresses = [
         {
           # Use IP address configured in the Oracle Cloud web interface
-          address = "10.0.0.90";
+          address = "10.0.0.3";
           prefixLength = 24;
         }
       ];
@@ -110,6 +110,8 @@ in
     vim
     neovim
     wget
+    dig
+
   ];
 
   # Enable the OpenSSH daemon.

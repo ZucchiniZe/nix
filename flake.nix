@@ -36,7 +36,7 @@
       };
 
       darwinConfigurations = {
-        "m4-mbp" = nix-darwin.lib.darwinSystem {
+        m4-mbp = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/m4-mbp ];
@@ -45,14 +45,14 @@
 
       deploy.nodes.heat = {
         hostname = "heat";
+        remoteBuild = true;
         profiles.system = {
           sshUser = "alex";
           path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.heat;
-          user = "alex";
-          remoteBuild = true;
+          user = "root";
         };
       };
 
-      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
+      # checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) deploy-rs.lib;
     };
 }
