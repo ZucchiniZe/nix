@@ -36,10 +36,10 @@
       };
 
       darwinConfigurations = {
-        m4-mbp = nix-darwin.lib.darwinSystem {
+        ab-m4mbp = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
-          modules = [ ./hosts/m4-mbp ];
+          modules = [ ./hosts/ab-m4mbp ];
         };
       };
 

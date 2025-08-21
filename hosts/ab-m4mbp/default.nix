@@ -4,6 +4,9 @@
 }:
 let
   user = "alex";
+  weekly = {
+    Weekday = 6;
+  };
 in
 {
   imports = [ ];
@@ -11,7 +14,11 @@ in
   nix = {
     gc = {
       automatic = true;
-      dates = "weekly";
+      interval = weekly;
+    };
+    optimise = {
+      automatic = true;
+      interval = weekly;
     };
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -25,4 +32,7 @@ in
   system = {
     primaryUser = user;
   };
+
+  # initial version for setting backwards incompatibility
+  system.stateVersion = 6;
 }
