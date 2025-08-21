@@ -86,6 +86,7 @@ in
 
   programs.zsh = {
     enable = true;
+    # fix zsh "no match" error by disabling globbing with the nix command
     shellAliases = {
       nix = "noglob nix";
     };
