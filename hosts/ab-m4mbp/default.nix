@@ -1,25 +1,23 @@
 {
   pkgs,
-  lib,
-  home-manager,
+  inputs,
   ...
 }:
 let
   user = "alex";
-  home = "/Users/${user}";
   weekly = {
     Weekday = 6;
   };
 in
 {
   imports = [
-    home-manager.darwinModules.home-manager
+    inputs.home-manager.darwinModules.home-manager
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.${user} = ../../home.nix;
-      home-manager.homeDirectory = lib.mkForce home;
+      home-manager.users.${user} = ./home.nix;
     }
+
   ];
 
   nix = {
@@ -41,6 +39,7 @@ in
     nil
     just
     utm
+    deploy-rs
   ];
 
   system = {

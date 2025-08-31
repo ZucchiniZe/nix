@@ -8,7 +8,7 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "alex";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/alex" else "/home/alex";
+  home.homeDirectory = "/Users/alex";
 
   # home.packages
 
@@ -25,10 +25,4 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-    # plugins = [ pkgs.vimPlugins.nvim-tree-lua ];
-  };
 }
