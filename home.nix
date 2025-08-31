@@ -12,6 +12,7 @@
   home.homeDirectory = lib.mkDefault "/home/alex";
 
   home.packages = with pkgs; [
+    bat
     eza
     nh
   ];
@@ -43,6 +44,17 @@
     setOptions = [
       "GLOB_COMPLETE" # glob expansion
     ];
+    # case insensitive tab completion with fuzzy matchin
+    initContent = ''
+      # 0 -- vanilla completion (abc => abc)
+      # 1 -- smart case completion (abc => Abc)
+      # 2 -- word flex completion (abc => A-big-Car)
+      # 3 -- full flex completion (abc => ABraCadabra)
+      zstyle ":completion:*" matcher-list "" \
+        "m:{a-z\-}={A-Z\_}" \
+        "r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}" \
+        "r:|?=** m:{a-z\-}={A-Z\_}"g
+    '';
     shellAliases = {
       gs = "git status -sb";
       gc = "git commit";
@@ -50,13 +62,12 @@
       gd = "git diff";
       gl = "git log";
       # eza prettier than ls
-      ls = "eza";
-      ll = "eza -lah --git";
+      ls = "${pkgs.eza}/bin/eza";
+      ll = "${pkgs.eza}/bin/eza -lah --git";
       icloud = "cd ~/Library/Mobile\ Documents";
       cl = "clear";
       # quicklook
       ql = "qlmanage";
-      testing = "echo nixed";
     };
   };
 
