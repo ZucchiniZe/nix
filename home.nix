@@ -1,6 +1,7 @@
 {
   # config,
   pkgs,
+  lib,
   ...
 }:
 
@@ -8,7 +9,7 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "alex";
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/alex" else "/home/alex";
+  home.homeDirectory = lib.mkDefault "/home/alex";
 
   # home.packages
 

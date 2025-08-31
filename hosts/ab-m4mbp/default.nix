@@ -13,9 +13,12 @@ in
   imports = [
     inputs.home-manager.darwinModules.home-manager
     {
-      home-manager.useGlobalPkgs = true;
-      home-manager.useUserPackages = true;
-      home-manager.users.${user} = ./home.nix;
+      users.users.alex.home = /Users/alex;
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users.${user} = ../../home.nix;
+      };
     }
 
   ];
