@@ -32,9 +32,16 @@
 
   programs.zsh = {
     enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    autosuggestion.enable = true;
+    enableCompletion = false;
+    antidote = {
+      enable = true;
+      plugins = [
+        "zsh-users/zsh-completions"
+        "zsh-users/zsh-autosuggestions"
+        "zdharma-continuum/fast-syntax-highlighting"
+        "zdharma-continuum/history-search-multi-word"
+      ];
+    };
     defaultKeymap = "emacs";
     history = {
       append = true;
