@@ -22,7 +22,7 @@ in
     {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.users.alex = ../../users/alex.nix;
+      home-manager.users.alex = ../../home.nix;
     }
     inputs.disko.nixosModules.disko
     ./disk-config.nix
