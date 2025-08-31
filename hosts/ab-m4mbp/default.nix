@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    ./system.nix
     inputs.home-manager.darwinModules.home-manager
     {
       users.users.alex.home = /Users/alex;
@@ -44,11 +45,6 @@ in
     utm
     deploy-rs
   ];
-
-  programs.nh = {
-    enable = true;
-    flake = "/Users/alex/Development/01_nix";
-  };
 
   homebrew = {
     enable = true;

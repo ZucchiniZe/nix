@@ -1,6 +1,6 @@
 {
   # config,
-  pkgs,
+  # pkgs,
   lib,
   ...
 }:
@@ -31,5 +31,10 @@
     defaultEditor = true;
     vimAlias = true;
     # plugins = [ pkgs.vimPlugins.nvim-tree-lua ];
+  };
+
+  programs.nh = {
+    enable = true;
+    darwinFlake = "/Users/alex/Development/01_nix/flake.nix";
   };
 }
