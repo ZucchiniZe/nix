@@ -19,6 +19,7 @@ in
         useGlobalPkgs = true;
         useUserPackages = true;
         users.${user} = ../../home.nix;
+        backupFileExtension = "pre-hm";
       };
     }
 
@@ -40,7 +41,7 @@ in
 
   environment.systemPackages = with pkgs; [
     nixfmt
-    nil
+    nixd
     just
     utm
     deploy-rs

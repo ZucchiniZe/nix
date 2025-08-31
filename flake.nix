@@ -27,19 +27,19 @@
       ...
     }@inputs:
     {
-      nixosConfigurations = {
-        heat = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [ ./hosts/heat ];
-        };
-      };
-
       darwinConfigurations = {
         ab-m4mbp = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; };
           modules = [ ./hosts/ab-m4mbp ];
+        };
+      };
+
+      nixosConfigurations = {
+        heat = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [ ./hosts/heat ];
         };
       };
 
