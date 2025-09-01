@@ -52,6 +52,7 @@ in
     casks = [
       "raycast"
       "publii"
+      "ghostty"
     ];
   };
 
