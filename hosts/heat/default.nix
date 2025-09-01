@@ -3,6 +3,7 @@
   # lib,
   inputs,
   pkgs,
+  gitRevision,
   ...
 }:
 
@@ -66,6 +67,8 @@ in
     networkmanager.enable = true;
   };
 
+  system.configurationRevision = gitRevision;
+
   time.timeZone = vars.timezone;
   i18n.defaultLocale = vars.locale;
 
@@ -108,11 +111,9 @@ in
   environment.systemPackages = with pkgs; [
     curl
     git
-    vim
     neovim
     wget
     dig
-
   ];
 
   # Enable the OpenSSH daemon.

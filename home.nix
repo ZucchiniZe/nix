@@ -118,6 +118,8 @@
         "$python"
         "$character"
       ];
+      username.format = "[$user]($style)@";
+      hostname.format = "[$hostname]($style): ";
       directory = {
         style = "blue";
         truncate_to_repo = false;

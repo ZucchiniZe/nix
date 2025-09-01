@@ -26,11 +26,14 @@
       deploy-rs,
       ...
     }@inputs:
+    let
+      gitRevision = toString (self.shortRev or self.dirtyShortRev or self.lastModified or "unknown");
+    in
     {
       darwinConfigurations = {
         ab-m4mbp = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs gitRevision; };
           modules = [ ./hosts/ab-m4mbp ];
         };
       };
@@ -38,7 +41,7 @@
       nixosConfigurations = {
         heat = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs gitRevision; };
           modules = [ ./hosts/heat ];
         };
       };

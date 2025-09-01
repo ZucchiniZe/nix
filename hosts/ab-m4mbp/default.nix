@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  gitRevision,
   ...
 }:
 let
@@ -38,6 +39,8 @@ in
       experimental-features = nix-command flakes
     '';
   };
+
+  system.configurationRevision = gitRevision;
 
   environment.systemPackages = with pkgs; [
     nixfmt
