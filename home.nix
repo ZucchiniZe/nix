@@ -153,6 +153,6 @@
   programs.nh = {
     enable = true;
     flake = "/home/alex/nix";
-    darwinFlake = "/Users/alex/Development/01_nix/flake.nix";
+    darwinFlake = "/Users/alex/Developer/01_nix";
   };
 }
