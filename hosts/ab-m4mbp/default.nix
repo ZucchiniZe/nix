@@ -55,6 +55,9 @@ in
     ];
   };
 
+  # allow ssh into laptop
+  services.openssh.enable = true;
+
   system = {
     primaryUser = user;
     # initial version for setting backwards incompatibility
