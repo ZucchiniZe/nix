@@ -53,6 +53,7 @@ in
       "raycast"
       "publii"
       "ghostty"
+      "touchdesigner"
     ];
   };
 
