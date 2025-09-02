@@ -45,7 +45,6 @@ in
   environment.systemPackages = with pkgs; [
     nixfmt
     nixd
-    just
     utm
     deploy-rs
   ];
