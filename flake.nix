@@ -44,6 +44,12 @@
           specialArgs = { inherit inputs gitRevision; };
           modules = [ ./hosts/heat ];
         };
+
+        nowhere = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs gitRevision; };
+          modules = [ ./hosts/nowhere ];
+        };
       };
 
       deploy.nodes.heat = {
