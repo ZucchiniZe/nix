@@ -1,14 +1,12 @@
 {
-  modulesPath,
   lib,
   pkgs,
   inputs,
+  gitRevision,
   ...
 }:
 {
   imports = [
-    (modulesPath + "/installer/scan/not-detected.nix")
-    (modulesPath + "/profiles/qemu-guest.nix")
     inputs.disko.nixosModules.disko
     ./disk-config.nix
     ./hardware-configuration.nix
@@ -21,13 +19,14 @@
   };
   services.openssh.enable = true;
 
+  system.configurationRevision = gitRevision;
+
   environment.systemPackages = map lib.lowPrio [
     pkgs.curl
     pkgs.gitMinimal
   ];
 
   users.users.root.openssh.authorizedKeys.keys = [
-    # change this to your ssh key
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPBRWC7uEA0ysNzYHMERozjdRuPUSD5kgwwmDH6DHmr"
   ];
 

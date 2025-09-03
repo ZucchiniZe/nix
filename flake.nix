@@ -52,13 +52,25 @@
         };
       };
 
-      deploy.nodes.heat = {
-        hostname = "heat";
-        remoteBuild = true;
-        profiles.system = {
-          sshUser = "alex";
-          path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.heat;
-          user = "root";
+      deploy.nodes = {
+        heat = {
+          hostname = "heat.noodle.sh";
+          remoteBuild = true;
+          profiles.system = {
+            sshUser = "alex";
+            user = "root";
+            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.heat;
+          };
+        };
+
+        nowhere = {
+          hostname = "nowhere.noodle.sh";
+          remoteBuild = true;
+          profiles.system = {
+            user = "root";
+            sshUser = "root";
+            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nowhere;
+          };
         };
       };
     };
