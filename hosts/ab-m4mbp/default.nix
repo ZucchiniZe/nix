@@ -6,9 +6,6 @@
 }:
 let
   user = "alex";
-  weekly = {
-    Weekday = 6;
-  };
 in
 {
   imports = [
