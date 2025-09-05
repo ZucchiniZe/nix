@@ -26,19 +26,21 @@ in
 
   ];
 
-  nix = {
-    gc = {
-      automatic = true;
-      interval = weekly;
-    };
-    optimise = {
-      automatic = true;
-      interval = weekly;
-    };
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
+  # Determinite Nix needs to take over from nix-darwin apparently
+  nix.enable = false;
+  # nix = {
+  #   gc = {
+  #     automatic = true;
+  #     interval = weekly;
+  #   };
+  #   optimise = {
+  #     automatic = true;
+  #     interval = weekly;
+  #   };
+  #   extraOptions = ''
+  #     experimental-features = nix-command flakes
+  #   '';
+  # };
 
   system.configurationRevision = gitRevision;
 
