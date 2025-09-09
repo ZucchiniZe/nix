@@ -1,5 +1,5 @@
 {
-  lib,
+  # lib,
   pkgs,
   inputs,
   gitRevision,
@@ -26,12 +26,23 @@ in
     ./disk-config.nix
     ./hardware-configuration.nix
   ];
-  boot.loader.grub = {
-    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
-    # devices = [ ];
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+    };
+    kernelParams = [ "net.ifnames=0" ];
+    initrd.systemd.enable = true;
   };
+  # boot.loader.grub = {
+  #   # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+  #   # devices = [ ];
+  #   efiSupport = true;
+  #   efiInstallAsRemovable = true;
+  # };
 
   networking = {
     hostName = vars.hostname;
@@ -40,10 +51,12 @@ in
       logRefusedConnections = true;
       rejectPackets = true;
       allowedTCPPorts = [ 22 ];
+      allowedUDPPorts = [ ];
     };
   };
 
   system.configurationRevision = gitRevision;
+
   time.timeZone = vars.timezone;
   i18n.defaultLocale = vars.locale;
 
@@ -62,7 +75,13 @@ in
     };
   };
 
-  documentation.enable = true;
+  programs.zsh = {
+    enable = true;
+    # fix zsh "no match" error by disabling globbing with the nix command
+    shellAliases = {
+      nix = "noglob nix";
+    };
+  };
 
   # Enable passwordless sudo.
   security.sudo.extraRules = [
@@ -77,20 +96,28 @@ in
     }
   ];
 
-  environment.systemPackages = map lib.lowPrio [
-    pkgs.curl
-    pkgs.gitMinimal
+  environment.systemPackages = with pkgs; [
+    curl
+    git
+    neovim
+    wget
+    dig
   ];
 
-  programs.zsh = {
+  # Enable the OpenSSH daemon.
+  services.openssh = {
     enable = true;
-    # fix zsh "no match" error by disabling globbing with the nix command
-    shellAliases = {
-      nix = "noglob nix";
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
     };
   };
 
-  services.openssh.enable = true;
+  # Disable autologin.
+  services.getty.autologinUser = null;
+
+  # Disable documentation for minimal install.
+  documentation.enable = true;
 
   system.stateVersion = "24.05";
 }
