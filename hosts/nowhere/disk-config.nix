@@ -25,7 +25,6 @@
             size = "1G";
             content = {
               type = "swap";
-              randomEncryption = true;
               priority = 100;
             };
           };
@@ -45,6 +44,7 @@
         type = "lvm_vg";
         lvs = {
           root = {
+            # to grow the filesystem dynamically i think???
             size = "100%FREE";
             content = {
               type = "filesystem";

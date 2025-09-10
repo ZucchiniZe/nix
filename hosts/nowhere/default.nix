@@ -60,7 +60,13 @@ in
   time.timeZone = vars.timezone;
   i18n.defaultLocale = vars.locale;
 
-  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings = {
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
+    experimental-features = "nix-command flakes";
+  };
 
   users = {
     mutableUsers = false;
