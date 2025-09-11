@@ -1,12 +1,13 @@
 {
   # config,
-  # pkgs,
+  pkgs,
   ...
 }:
 
 {
 
   imports = [
+    ../../modules/shell/common.nix
     ../../modules/shell/zsh.nix
   ];
 
@@ -14,6 +15,12 @@
   # paths it should manage.
   home.username = "alex";
   home.homeDirectory = /Users/alex;
+  home.packages = with pkgs; [
+    bat
+    eza
+    nh
+    just
+  ];
 
   programs.zsh.shellAliases = {
     # quicklook
