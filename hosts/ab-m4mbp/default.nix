@@ -45,6 +45,8 @@ in
     nixfmt
     nixd
     utm
+    imhex
+    hexfiend
     deploy-rs
   ];
 
