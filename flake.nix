@@ -50,6 +50,12 @@
           specialArgs = { inherit inputs gitRevision; };
           modules = [ ./hosts/nowhere ];
         };
+
+        qatsi = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs gitRevision; };
+          modules = [ ./hosts/qatsi ];
+        };
       };
 
       deploy.nodes = {
