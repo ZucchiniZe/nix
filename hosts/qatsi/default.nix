@@ -25,19 +25,23 @@ in
       home-manager.useUserPackages = true;
       home-manager.users.alex = ../../home.nix;
     }
-    inputs.disko.nixosModules.disko
-    ./disk-config.nix
   ];
 
   boot = {
-    loader = {
-      systemd-boot.enable = true;
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
-    };
+    # loader = {
+    #   systemd-boot.enable = true;
+    #   efi = {
+    #     canTouchEfiVariables = true;
+    #     efiSysMountPoint = "/boot";
+    #   };
+    # };
     initrd.systemd.enable = true;
+  };
+  boot.loader.grub = {
+    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
+    # devices = [ ];
+    efiSupport = true;
+    efiInstallAsRemovable = true;
   };
 
   networking = {
