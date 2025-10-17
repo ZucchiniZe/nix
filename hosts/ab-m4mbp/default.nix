@@ -48,10 +48,14 @@ in
     imhex
     hexfiend
     deploy-rs
+    uv
   ];
 
   homebrew = {
     enable = true;
+    brews = [
+      "telnet"
+    ];
     casks = [
       "raycast"
       "publii"
