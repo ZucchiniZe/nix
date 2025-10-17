@@ -50,6 +50,7 @@ in
     deploy-rs
     uv
     restic
+    halloy
   ];
 
   homebrew = {
