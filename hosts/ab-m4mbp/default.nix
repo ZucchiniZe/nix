@@ -49,6 +49,7 @@ in
     hexfiend
     deploy-rs
     uv
+    restic
   ];
 
   homebrew = {
