@@ -51,6 +51,7 @@ in
     uv
     restic
     halloy
+    gnuradio
   ];
 
   homebrew = {
