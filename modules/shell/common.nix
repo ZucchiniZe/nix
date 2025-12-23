@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   programs.git.delta.enable = true;
@@ -58,7 +58,7 @@
 
   programs.nh = {
     enable = true;
-    flake = "/home/alex/nix";
+    flake = lib.mkDefault "/home/alex/nix";
     darwinFlake = "/Users/alex/Developer/01_nix";
   };
 }

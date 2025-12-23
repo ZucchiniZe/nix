@@ -1,5 +1,14 @@
 # Alex's Nix Configurations
 
+## Hosts
+
+| host     | purpose         | notes                             |
+| -------- | --------------- | --------------------------------- |
+| ab-m4mbp | personal laptop | m4 max macbook pro                |
+| heat     |                 | oracle cloud free tier arm server |
+| nowhere  |                 | racknerd yearly vps               |
+| qatsi    |                 | local vm on santiago in homelab   |
+
 ## Deployment
 
 using [deploy-rs](https://github.com/serokell/deploy-rs) just run

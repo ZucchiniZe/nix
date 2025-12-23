@@ -28,20 +28,12 @@ in
   ];
 
   boot = {
-    # loader = {
-    #   systemd-boot.enable = true;
-    #   efi = {
-    #     canTouchEfiVariables = true;
-    #     efiSysMountPoint = "/boot";
-    #   };
-    # };
-    initrd.systemd.enable = true;
-  };
-  boot.loader.grub = {
-    # no need to set devices, disko will add all devices that have a EF02 partition to the list already
-    # devices = [ ];
-    efiSupport = true;
-    efiInstallAsRemovable = true;
+    loader = {
+      systemd-boot.enable = true;
+      efi = {
+        canTouchEfiVariables = true;
+      };
+    };
   };
 
   networking = {
@@ -50,8 +42,9 @@ in
       # (both optional)
       logRefusedConnections = false;
       rejectPackets = true;
+      allowedTCPPorts = [ 22 ];
+      # allowedUDPPorts = [ 53 ];
     };
-    networkmanager.enable = true;
   };
 
   system.configurationRevision = gitRevision;
@@ -65,10 +58,7 @@ in
     mutableUsers = false;
     users.${vars.username} = {
       isNormalUser = true;
-      extraGroups = [
-        "networkmanager"
-        "wheel"
-      ];
+      extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = [ vars.sshKey ];
     };
@@ -102,6 +92,9 @@ in
     wget
   ];
 
+  # this host is virtualized within a proxmox server so we should enable the qemu guest agent
+  services.qemuGuest.enable = true;
+
   # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
@@ -113,10 +106,6 @@ in
 
   # Disable autologin.
   services.getty.autologinUser = null;
-
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
 
   documentation.enable = true;
 
