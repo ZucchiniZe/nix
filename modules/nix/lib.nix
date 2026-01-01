@@ -1,40 +1,33 @@
 {
   inputs,
+  lib,
   ...
 }:
 {
-  # setup tools for the dendritic nix pattern of feature first configuration.
+  # helper functions to create systems
 
-  # using the flake parts module system
-  # and flake-file to generate the root flake
-  # and then importing all of the nix files in the module dir
-
-  # https://github.com/hercules-ci/flake-parts
-  # https://github.com/vic/flake-file
-  # https://github.com/vic/import-tree
-
-  # to generate `nix run .#write-flake`
-
-  flake-file.inputs = {
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    flake-file.url = "github:vic/flake-file";
-    import-tree.url = "github:vic/import-tree";
+  options.flake.lib = lib.mkOption {
+    type = lib.types.attrsOf lib.types.unspecified;
+    default = { };
   };
 
-  import = [
-    inputs.flake-parts.flakeModules.modules
-    inputs.flake-file.flakeModules.default
-  ];
+  config.flake.lib = {
+    mkNixos = system: name: {
+      ${name} = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+          inputs.self.modules.nixos.${name}
+          { nixpkgs.hostPlatform = lib.mkDefault system; }
+        ];
+      };
+    };
 
-  flake-file.outputs = ''
-    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules)
-  '';
-
-  flake-file.description = "ajb-nix";
-
-  systems = [
-    "aarch64-darwin"
-    "aarch64-linux"
-    "x86_64-linux"
-  ];
+    mkDarwin = system: name: {
+      ${name} = inputs.nix-darwin.lib.darwinSystem {
+        modules = [
+          inputs.self.modules.darwin.${name}
+          { nixpkgs.hostPlatform = lib.mkDefault system; }
+        ];
+      };
+    };
+  };
 }
