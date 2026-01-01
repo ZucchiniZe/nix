@@ -4,6 +4,6 @@
 }:
 {
 
-  flake.moduels.homeManager.system-default = {
+  flake.modules.homeManager.system-default = {
   };
 }

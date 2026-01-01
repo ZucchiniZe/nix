@@ -4,6 +4,6 @@
 }:
 {
 
-  flake.moduels.nixos.system-default = {
+  flake.modules.nixos.system-default = {
   };
 }
