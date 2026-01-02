@@ -1,83 +1,25 @@
+# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# Use `nix run .#write-flake` to regenerate it.
 {
-  description = "NixOS & nix-darwin Configurations";
+  description = "ajb-nix";
+
+  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    deploy-rs.url = "github:serokell/deploy-rs";
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
+    flake-file.url = "github:vic/flake-file";
+    flake-parts = {
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      url = "github:hercules-ci/flake-parts";
     };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    import-tree.url = "github:vic/import-tree";
     nix-darwin = {
-      url = "github:nix-darwin/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
     };
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-lib.follows = "nixpkgs";
+    systems.url = "github:nix-systems/default";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nix-darwin,
-      deploy-rs,
-      ...
-    }@inputs:
-    let
-      gitRevision = toString (self.shortRev or self.dirtyShortRev or self.lastModified or "unknown");
-    in
-    {
-      darwinConfigurations = {
-        ab-m4mbp = nix-darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit inputs gitRevision; };
-          modules = [ ./hosts/ab-m4mbp ];
-        };
-      };
-
-      nixosConfigurations = {
-        heat = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs gitRevision; };
-          modules = [ ./hosts/heat ];
-        };
-
-        nowhere = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs gitRevision; };
-          modules = [ ./hosts/nowhere ];
-        };
-
-        qatsi = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs gitRevision; };
-          modules = [ ./hosts/qatsi ];
-        };
-      };
-
-      deploy.nodes = {
-        heat = {
-          hostname = "heat.noodle.sh";
-          remoteBuild = true;
-          profiles.system = {
-            sshUser = "alex";
-            user = "root";
-            path = deploy-rs.lib.aarch64-linux.activate.nixos self.nixosConfigurations.heat;
-          };
-        };
-
-        nowhere = {
-          hostname = "nowhere.noodle.sh";
-          remoteBuild = true;
-          profiles.system = {
-            user = "root";
-            sshUser = "root";
-            path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.nowhere;
-          };
-        };
-      };
-    };
 }
