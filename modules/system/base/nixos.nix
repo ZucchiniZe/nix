@@ -4,9 +4,9 @@
 }:
 {
 
-  flake.modules.nixos.system-default = {
+  flake.modules.nixos.system-base = {
 
-    # basic firewall hardening    
+    # basic firewall hardening
     networking.firewall = {
       logRefusedConnections = false;
       rejectPackets = true;

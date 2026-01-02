@@ -12,7 +12,7 @@
     };
   };
 
-  flake.modules.darwin.system-default = {
+  flake.modules.darwin.system-base = {
 
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = 6;
