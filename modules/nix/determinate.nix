@@ -8,4 +8,8 @@
     imports = [ inputs.determinate.darwinModules.default ];
     nix.enable = false; # determinate nix handles nix config - can configure
   };
+
+  flake.modules.nixos.determinate = {
+    imports = [ inputs.determinate.nixosModules.default ];
+  };
 }
