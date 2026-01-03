@@ -9,7 +9,6 @@
     imports = with inputs.self.modules.darwin; [
       system-default
       alex
-      ssh
     ];
 
     networking.hostName = "ab-m4mbp";

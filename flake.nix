@@ -7,6 +7,10 @@
 
   inputs = {
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    disko = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/disko/latest";
+    };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";

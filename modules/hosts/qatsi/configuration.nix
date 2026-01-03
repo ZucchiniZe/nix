@@ -7,7 +7,6 @@
       system-default
       proxmox-vm
       alex
-      ssh
     ];
 
     networking.hostName = "qatsi";
