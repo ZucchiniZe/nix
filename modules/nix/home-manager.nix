@@ -1,11 +1,15 @@
 { inputs, ... }:
 let
-  home-manager-config = {
-    verbose = true;
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    backupFileExtension = "pre-hm";
-  };
+  home-manager-config =
+    { lib, ... }:
+    {
+      home-manager = {
+        verbose = true;
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        backupFileExtension = "pre-hm";
+      };
+    };
 in
 {
   flake-file.inputs = {
