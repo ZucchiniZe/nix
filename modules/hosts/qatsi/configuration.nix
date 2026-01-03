@@ -9,5 +9,7 @@
 
     networking.hostName = "qatsi";
 
+    # dont delete - required for backwards compat checks
+    system.stateVersion = "25.05";
   };
 }

@@ -31,7 +31,6 @@
     swapDevices = [
       { device = "/dev/disk/by-label/swap"; }
     ];
-
     nixpkgs.hostPlatform = "x86_64-linux";
   };
 }
