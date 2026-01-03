@@ -1,5 +1,5 @@
 {
-  # inputs,
+  inputs,
   ...
 }:
 {
@@ -13,6 +13,14 @@
   };
 
   flake.modules.darwin.system-base = {
+
+    nixpkgs.overlays = [
+      (final: _prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (final) config system;
+        };
+      })
+    ];
 
     nixpkgs.config.allowUnfree = true;
 
