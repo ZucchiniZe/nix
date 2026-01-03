@@ -17,7 +17,6 @@
     nixpkgs.config.allowUnfree = true;
 
     # use determinate nix
-    nix.enable = false;
     determinate-nix.customSettings = {
       # Enables parallel evaluation (remove this setting or set the value to 1 to disable)
       eval-cores = 0;

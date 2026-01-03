@@ -4,7 +4,7 @@
 
   flake.modules.nixos.qatsi = {
     imports = with inputs.self.modules.nixos; [
-      system-base
+      system-default
       alex
       ssh
     ];
