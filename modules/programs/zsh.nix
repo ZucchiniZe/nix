@@ -40,7 +40,7 @@
           gc = "git commit";
           gp = "git push";
           gd = "git diff";
-          gl = "git log";
+          gl = "git lg";
           # eza prettier than ls
           ls = "${pkgs.eza}/bin/eza";
           ll = "${pkgs.eza}/bin/eza -lah --git";
