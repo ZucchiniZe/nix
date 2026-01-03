@@ -4,7 +4,9 @@ uses [dendritic nix](https://github.com/mightyiam/dendritic) setup using this
 guide [on dendritic design](https://github.com/Doc-Steve/dendritic-design-with-flake-parts).
 
 all files are imported automatically. files are broken up into features, that
-then apply laterally across all configurations
+then apply laterally across all configurations.
+
+the entry point to the flake generation is `modules/nix/dendritic-flake.nix`
 
 ## Hosts
 

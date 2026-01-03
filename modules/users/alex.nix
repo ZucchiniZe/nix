@@ -13,13 +13,17 @@ let
       ];
 
       home.username = "${username}";
-      home.packages = with pkgs; [ ];
+      home.packages = with pkgs; [
+        mediainfo
+      ];
     };
 
   flake.modules.nixos.${username} =
     { pkgs, ... }:
     {
-      home-manager.users."${username}".imports = [ inputs.self.modules.homeManager."${username}" ];
+      home-manager.users."${username}" = {
+        imports = [ inputs.self.modules.homeManager."${username}" ];
+      };
 
       users.users."${username}" = {
         isNormalUser = true;
@@ -44,7 +48,21 @@ let
         }
       ];
     };
-  flake.modules.darwin.${username} = { };
+  flake.modules.darwin.${username} =
+    { pkgs, ... }:
+    {
+      home-manager.users."${username}" = {
+        imports = [ inputs.self.modules.homeManager."${username}" ];
+      };
+
+      system.primaryUser = "${username}";
+
+      users.users."${username}" = {
+        name = "${username}";
+        shell = pkgs.zsh;
+      };
+      programs.zsh.enable = true;
+    };
 in
 {
   inherit flake;

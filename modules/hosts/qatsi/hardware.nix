@@ -1,8 +1,4 @@
 {
-  inputs,
-  ...
-}:
-{
   flake.modules.nixos.qatsi = {
     boot.initrd.availableKernelModules = [
       "ata_piix"

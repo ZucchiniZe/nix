@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   home-manager-config =
-    { lib, ... }:
+    { ... }:
     {
       home-manager = {
         verbose = true;
