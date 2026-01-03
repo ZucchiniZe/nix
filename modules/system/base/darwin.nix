@@ -64,8 +64,8 @@
         AppleShowAllExtensions = true;
       };
       dock = {
-        # hot corners
         wvous-tr-corner = 2; # top right mission control
+        wvous-tl-corner = 3; # top left app windows
         wvous-br-corner = 5; # bottom right start screensaver
         wvous-bl-corner = 10; # bottom left sleep display
 

@@ -1,5 +1,11 @@
 # Alex's Nix Configurations
 
+uses [dendritic nix](https://github.com/mightyiam/dendritic) setup using this
+guide [on dendritic design](https://github.com/Doc-Steve/dendritic-design-with-flake-parts).
+
+all files are imported automatically. files are broken up into features, that
+then apply laterally across all configurations
+
 ## Hosts
 
 | host     | purpose         | notes                             |
@@ -12,7 +18,8 @@
 ## Deployment
 
 using [deploy-rs](https://github.com/serokell/deploy-rs) just run
-`nix run github:serokell/deploy-rs -- .#<host>.<profile>` `profile` defaults to `system`
+`nix run github:serokell/deploy-rs -- .#<host>.<profile>` `profile` defaults to
+`system`
 
 ## Deployment (Old Way)
 
