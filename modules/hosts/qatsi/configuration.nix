@@ -3,11 +3,15 @@
   flake.nixosConfigurations = inputs.self.lib.mkNixos "x86_64-linux" "qatsi";
 
   flake.modules.nixos.qatsi = {
-    imports = with inputs.self.modules.nixos; [
-      system-default
-      alex
-      ssh
-    ];
+    imports =
+      with inputs.self.modules.nixos;
+      [
+        system-default
+        proxmox-vm
+        alex
+        ssh
+      ]
+      ++ [ ./hardware.nix ];
 
     networking.hostName = "qatsi";
 
