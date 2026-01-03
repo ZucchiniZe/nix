@@ -5,9 +5,14 @@ let
       environment.systemPackages = with pkgs; [
         fd
         git
+        home-manager
         jujutsu
         neovim
-        home-manager
+        nil
+        nixd
+        nixfmt
+        restic
+        uv
       ];
     };
 in

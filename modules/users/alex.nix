@@ -62,6 +62,14 @@ let
         shell = pkgs.zsh;
       };
       programs.zsh.enable = true;
+
+      # nix darwin doesn't ovver programs.zsh.shellAliases so we need to
+      # set them using this
+      environment.shellAliases = {
+        # mac specific aliases
+        ql = "qlmanage";
+        icloud = "cd ~/Library/Mobile\ Documents";
+      };
     };
 in
 {

@@ -4,6 +4,7 @@
     imports = with inputs.self.modules.darwin; [
       nix-tools
       cli-tools
+      homebrew
     ];
   };
 
