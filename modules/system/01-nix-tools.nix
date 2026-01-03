@@ -20,4 +20,11 @@
       ]
       ++ [ inputs.self.modules.generic.constants ];
   };
+
+  flake.modules.homeManager.nix-tools = {
+    imports = [
+      inputs.self.modules.homeManager.system-base
+      inputs.self.modules.generic.constants
+    ];
+  };
 }

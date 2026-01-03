@@ -6,7 +6,10 @@ let
   flake.modules.homeManager.${username} =
     { pkgs, ... }:
     {
-      imports = with inputs.self.modules.homeManager; [ zsh ];
+      imports = with inputs.self.modules.homeManager; [
+        system-default
+        zsh
+      ];
 
       home.username = "${username}";
       home.packages = with pkgs; [ ];
