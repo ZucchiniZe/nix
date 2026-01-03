@@ -8,10 +8,15 @@
   flake.modules.darwin.ab-m4mbp = {
     imports = with inputs.self.modules.darwin; [
       system-base
+      alex
+      ssh
     ];
 
     networking.hostName = "ab-m4mbp";
 
-    system.primaryUser = "alex";
+    system = {
+      primaryUser = "alex";
+      stateVersion = 6;
+    };
   };
 }

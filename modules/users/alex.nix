@@ -10,6 +10,19 @@ let
       extraGroups = [ "wheel" ];
       openssh.authorizedKeys.keys = [ sshKey ];
     };
+
+    # enable passwordless sudo
+    security.sudo.extraRules = [
+      {
+        users = [ username ];
+        commands = [
+          {
+            command = "ALL";
+            options = [ "NOPASSWD" ];
+          }
+        ];
+      }
+    ];
   };
   flake.modules.darwin.${username} = { };
 in
