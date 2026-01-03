@@ -17,6 +17,7 @@
       [
         system-base
         home-manager
+        determinate
       ]
       ++ [ inputs.self.modules.generic.constants ];
   };

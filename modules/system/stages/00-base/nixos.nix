@@ -67,12 +67,11 @@
         logRefusedConnections = false;
         rejectPackets = true;
         allowedTCPPorts = [ 22 ];
-        allowedUDPPorts = [ 53 ];
+        allowedUDPPorts = [ ];
       };
     };
 
     time.timeZone = "America/Los_Angeles";
     i18n.defaultLocale = "en_US.UTF-8";
-
   };
 }
