@@ -1,14 +1,22 @@
 { inputs, ... }:
 let
   username = "alex";
-  git-signing =
+  secure-git =
     { config, ... }:
     {
       # only enable on macos with 1pass
-      programs.git.signing = {
-        format = "ssh";
-        signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-        key = config.constants.alex.sshKey;
+      programs.git = {
+        signing = {
+          format = "ssh";
+          signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+          key = config.constants.alex.sshKey;
+        };
+        settings.url = {
+          "ssh://git@github.com/" = {
+            insteadOf = "https://github.com/";
+          };
+        };
+
       };
     };
 in
@@ -34,7 +42,7 @@ in
       home-manager.users."${username}" = {
         imports = [
           inputs.self.modules.homeManager."${username}"
-          git-signing
+          secure-git
         ];
       };
 

@@ -41,11 +41,6 @@ in
             email = "me@alexb.io";
           };
           init.defaultBranch = "main";
-          url = {
-            "ssh://git@github.com/" = {
-              insteadOf = "https://github.com/";
-            };
-          };
         };
       };
 
