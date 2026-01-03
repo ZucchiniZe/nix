@@ -5,6 +5,8 @@
   flake.modules.nixos.qatsi = {
     imports = with inputs.self.modules.nixos; [
       system-base
+      alex
+      ssh
     ];
 
     networking.hostName = "qatsi";
