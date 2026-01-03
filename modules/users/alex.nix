@@ -1,7 +1,16 @@
 { inputs, ... }:
 let
   username = "alex";
-  sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPBRWC7uEA0ysNzYHMERozjdRuPUSD5kgwwmDH6DHmr";
+  git-signing =
+    { config, ... }:
+    {
+      # only enable on macos with 1pass
+      programs.git.signing = {
+        format = "ssh";
+        signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        key = config.constants.alex.sshKey;
+      };
+    };
 in
 {
   flake.modules.homeManager.${username} =
@@ -20,16 +29,20 @@ in
     };
 
   flake.modules.darwin.${username} =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       home-manager.users."${username}" = {
-        imports = [ inputs.self.modules.homeManager."${username}" ];
+        imports = [
+          inputs.self.modules.homeManager."${username}"
+          git-signing
+        ];
       };
 
       system.primaryUser = "${username}";
 
       users.users."${username}" = {
         name = "${username}";
+        openssh.authorizedKeys.keys = [ config.constants.alex.sshKey ];
         shell = pkgs.zsh;
       };
       programs.zsh.enable = true;
@@ -44,7 +57,7 @@ in
     };
 
   flake.modules.nixos.${username} =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       home-manager.users."${username}" = {
         imports = [ inputs.self.modules.homeManager."${username}" ];
@@ -54,7 +67,7 @@ in
         isNormalUser = true;
 
         extraGroups = [ "wheel" ];
-        openssh.authorizedKeys.keys = [ sshKey ];
+        openssh.authorizedKeys.keys = [ config.constants.alex.sshKey ];
         shell = pkgs.zsh;
       };
 
