@@ -8,6 +8,7 @@ let
     {
       imports = with inputs.self.modules.homeManager; [
         system-default
+        editors
         zsh
       ];
 
