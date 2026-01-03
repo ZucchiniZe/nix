@@ -18,6 +18,30 @@ let
       ];
     };
 
+  flake.modules.darwin.${username} =
+    { pkgs, ... }:
+    {
+      home-manager.users."${username}" = {
+        imports = [ inputs.self.modules.homeManager."${username}" ];
+      };
+
+      system.primaryUser = "${username}";
+
+      users.users."${username}" = {
+        name = "${username}";
+        shell = pkgs.zsh;
+      };
+      programs.zsh.enable = true;
+
+      # nix darwin doesn't ovver programs.zsh.shellAliases so we need to
+      # set them using this
+      environment.shellAliases = {
+        # mac specific aliases
+        ql = "qlmanage";
+        icloud = "cd ~/Library/Mobile\ Documents";
+      };
+    };
+
   flake.modules.nixos.${username} =
     { pkgs, ... }:
     {
@@ -47,29 +71,6 @@ let
           ];
         }
       ];
-    };
-  flake.modules.darwin.${username} =
-    { pkgs, ... }:
-    {
-      home-manager.users."${username}" = {
-        imports = [ inputs.self.modules.homeManager."${username}" ];
-      };
-
-      system.primaryUser = "${username}";
-
-      users.users."${username}" = {
-        name = "${username}";
-        shell = pkgs.zsh;
-      };
-      programs.zsh.enable = true;
-
-      # nix darwin doesn't ovver programs.zsh.shellAliases so we need to
-      # set them using this
-      environment.shellAliases = {
-        # mac specific aliases
-        ql = "qlmanage";
-        icloud = "cd ~/Library/Mobile\ Documents";
-      };
     };
 in
 {

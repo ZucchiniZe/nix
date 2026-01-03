@@ -13,7 +13,6 @@
   };
 
   flake.modules.darwin.system-base = {
-
     nixpkgs.overlays = [
       (final: _prev: {
         unstable = import inputs.nixpkgs-unstable {

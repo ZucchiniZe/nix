@@ -17,14 +17,6 @@ let
     };
 in
 {
-  flake.modules.darwin.cli-tools = {
-    imports = [ genericPackages ];
-  };
-
-  flake.modules.nixos.cli-tools = {
-    imports = [ genericPackages ];
-  };
-
   flake.modules.homeManager.cli-tools =
     { pkgs, ... }:
     {
@@ -42,4 +34,12 @@ in
         darwinFlake = "/Users/alex/Developer/01_nix";
       };
     };
+
+  flake.modules.darwin.cli-tools = {
+    imports = [ genericPackages ];
+  };
+
+  flake.modules.nixos.cli-tools = {
+    imports = [ genericPackages ];
+  };
 }

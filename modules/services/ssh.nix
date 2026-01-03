@@ -1,4 +1,8 @@
 {
+  flake.modules.darwin.ssh = {
+    services.openssh.enable = true;
+  };
+
   flake.modules.nixos.ssh = {
     services.openssh = {
       enable = true;
@@ -8,8 +12,5 @@
         PermitRootLogin = "yes";
       };
     };
-  };
-  flake.modules.darwin.ssh = {
-    services.openssh.enable = true;
   };
 }
