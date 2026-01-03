@@ -2,7 +2,8 @@
 let
   username = "alex";
   sshKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPBRWC7uEA0ysNzYHMERozjdRuPUSD5kgwwmDH6DHmr";
-
+in
+{
   flake.modules.homeManager.${username} =
     { pkgs, ... }:
     {
@@ -72,7 +73,4 @@ let
         }
       ];
     };
-in
-{
-  inherit flake;
 }
