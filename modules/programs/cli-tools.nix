@@ -33,15 +33,18 @@ in
         darwinFlake = "/Users/alex/Developer/01_nix";
       };
 
-      programs.git.settings = {
-        user = {
-          name = "Alex Bierwagen";
-          email = "me@alexb.io";
-        };
-        init.defaultBranch = "main";
-        url = {
-          "ssh://git@github.com/" = {
-            insteadOf = "https://github.com/";
+      programs.git = {
+        enable = true;
+        settings = {
+          user = {
+            name = "Alex Bierwagen";
+            email = "me@alexb.io";
+          };
+          init.defaultBranch = "main";
+          url = {
+            "ssh://git@github.com/" = {
+              insteadOf = "https://github.com/";
+            };
           };
         };
       };
