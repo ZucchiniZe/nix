@@ -16,6 +16,7 @@ let
         nixd
         nixfmt
         restic
+        ripgrep
         uv
       ];
     };
