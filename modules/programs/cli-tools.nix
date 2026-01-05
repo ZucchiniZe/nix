@@ -8,6 +8,7 @@ let
         fd
         git
         home-manager
+        iperf3
         jujutsu
         just
         neovim
