@@ -16,8 +16,10 @@ let
         nil
         nixd
         nixfmt
+        pciutils
         restic
         ripgrep
+        usbutils
         uv
       ];
     };
