@@ -13,7 +13,6 @@
       [
         system-default
         alex
-        ups
       ]
       ++ [ inputs.disko.nixosModules.disko ];
 

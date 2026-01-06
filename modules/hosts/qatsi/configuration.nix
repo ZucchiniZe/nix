@@ -7,7 +7,14 @@
       system-default
       proxmox-vm
       alex
+      ups
     ];
+
+    power.ups.ups.noodle-factory = {
+      driver = "usbhid-ups";
+      port = "auto"; # for usb since `port` refers to a serial port
+      description = "the main ups for the noodle factory, connected via usb to qatsi";
+    };
 
     networking.hostName = "qatsi";
 
