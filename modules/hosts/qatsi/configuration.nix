@@ -7,7 +7,20 @@
       system-default
       proxmox-vm
       alex
+      caddy
     ];
+
+    homelab.services.caddy.enable = true;
+
+    boot.supportedFilesystems = [ "nfs" ];
+    fileSystems."/mnt/playtime" = {
+      device = "10.1.1.25:/volume1/20-media";
+      fsType = "nfs";
+      options = [
+        "x-systemd.automount"
+        "noauto"
+      ];
+    };
 
     networking.hostName = "qatsi";
 
