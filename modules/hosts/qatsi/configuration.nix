@@ -14,7 +14,7 @@
 
     boot.supportedFilesystems = [ "nfs" ];
     fileSystems."/mnt/playtime" = {
-      device = "10.1.1.25:/volume1/20-media";
+      device = "10.1.1.15:/volume1/20-media";
       fsType = "nfs";
       options = [
         "x-systemd.automount"
