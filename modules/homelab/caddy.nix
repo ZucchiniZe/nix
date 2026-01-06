@@ -18,7 +18,7 @@
         services.caddy = {
           enable = true;
           package = pkgs.caddy.withPlugins {
-            plugins = [ "https://github.com/caddy-dns/powerdns@v0.2.2" ];
+            plugins = [ "https://github.com/caddy-dns/cloudflare@v0.2.2" ];
           };
         };
       };
