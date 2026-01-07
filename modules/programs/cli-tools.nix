@@ -5,6 +5,7 @@ let
       environment.systemPackages = with pkgs; [
         bat
         eza
+        fastfetch
         fd
         git
         home-manager
