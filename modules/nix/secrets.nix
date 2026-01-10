@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   sharedOptions = {
-    # sops.defaultSopsFile = "";
+    sops.defaultSopsFile = ../../secrets/default.yaml;
   };
 in
 {
