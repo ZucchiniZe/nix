@@ -1,0 +1,11 @@
+keys:
+  - &admin_alex age16zt75n2yxu93j8ttdm4425cqjncd0f7eswha8cvzcs94vx2aedcq03t8k7
+  - &server_qatsi age18klmmds75e9p8rfy9y99f2kvvjkvq8kptxs4cffkwqz6ljtjfvks649avv
+  - &server_heat age15hrdghf736p7gm5tc6dtsd0nad94a9f67alp55hvagu7xtkesccs0hjruj
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|yml|json|env|ini)$
+    key_groups:
+      - age:
+          - *admin_alex
+          - *server_qatsi
+          - *server_heat

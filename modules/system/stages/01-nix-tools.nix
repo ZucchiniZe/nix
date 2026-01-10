@@ -3,6 +3,7 @@
   flake.modules.homeManager.nix-tools = {
     imports = [
       inputs.self.modules.homeManager.system-base
+      inputs.self.modules.homeManager.secrets
       inputs.self.modules.generic.constants
     ];
   };
@@ -16,6 +17,7 @@
           system-base
           home-manager
           determinate
+          secrets
         ]
         ++ [ inputs.self.modules.generic.constants ];
 
@@ -31,6 +33,7 @@
           system-base
           home-manager
           determinate
+          secrets
         ]
         ++ [ inputs.self.modules.generic.constants ];
 
