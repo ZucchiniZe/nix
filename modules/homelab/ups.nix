@@ -1,5 +1,6 @@
 {
   flake.modules.nixos.ups = {
+    # https://www.reddit.com/r/NixOS/comments/16qcadl/ups_with_nut_usbhid_driver_and_prometheus_working/
     power.ups = {
       enable = true;
       mode = "standalone"; # TODO: change to netserver
