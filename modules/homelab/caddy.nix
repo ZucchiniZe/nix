@@ -16,19 +16,26 @@
       };
       config = lib.mkIf cfg.enable {
         sops.secrets."caddy/env".owner = "caddy";
+        systemd.services.caddy.serviceConfig.EnvironmentFile = [ config.sops.secrets."caddy/env".path ];
 
+        networking.firewall.allowedTCPPorts = [ 80 ];
         services.caddy = {
           enable = true;
           package = pkgs.caddy.withPlugins {
             plugins = [ "github.com/caddy-dns/cloudflare@v0.2.2" ];
             hash = "sha256-dnhEjopeA0UiI+XVYHYpsjcEI6Y1Hacbi28hVKYQURg=";
           };
+
           globalConfig = ''
             	acme_dns cloudflare {$CF_APIKEY}
           '';
-        };
 
-        systemd.services.caddy.serviceConfig.EnvironmentFile = [ config.sops.secrets."caddy/env".path ];
+          virtualHosts = {
+            "alex.bierwagen.io".extraConfig = ''
+              respond	"hello!"
+            '';
+          };
+        };
       };
     };
 }
