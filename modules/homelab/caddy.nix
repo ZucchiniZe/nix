@@ -30,7 +30,8 @@
           };
 
           globalConfig = ''
-            	acme_dns cloudflare {$CF_APIKEY}
+            email {$EMAIL}
+            acme_dns cloudflare {$CF_APIKEY}
           '';
 
           virtualHosts = {
