@@ -18,7 +18,10 @@
         sops.secrets."caddy/env".owner = "caddy";
         systemd.services.caddy.serviceConfig.EnvironmentFile = [ config.sops.secrets."caddy/env".path ];
 
-        networking.firewall.allowedTCPPorts = [ 80 ];
+        networking.firewall.allowedTCPPorts = [
+          80
+          443
+        ];
         services.caddy = {
           enable = true;
           package = pkgs.caddy.withPlugins {
