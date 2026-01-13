@@ -8,6 +8,7 @@
       proxmox-vm
       alex
       homelab
+      monitor-node
     ];
 
     homelab.baseDomain = "bierwagen.io";
