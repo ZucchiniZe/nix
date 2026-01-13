@@ -12,7 +12,9 @@
 
     homelab.baseDomain = "bierwagen.io";
     homelab.services.caddy.enable = true;
-    homelab.services.headscale.enable = true;
+    homelab.services.monitoring.enable = true;
+    # not working yet
+    # homelab.services.headscale.enable = true;
 
     boot.supportedFilesystems = [ "nfs" ];
     fileSystems."/mnt/playtime" = {
