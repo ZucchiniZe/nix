@@ -79,6 +79,32 @@
           port = cfg.prometheus.port;
 
           globalConfig.scrape_interval = cfg.prometheus.scrape_interval;
+
+          scrapeConfigs = [
+            {
+              job_name = "nut";
+              metrics_path = "/ups_metrics";
+              params = {
+                ups = [ "noodle-ups" ];
+              };
+              static_configs = [
+                {
+                  targets = [ "localhost:${toString config.services.prometheus.exporters.nut.port}" ];
+                  labels = {
+                    ups = "noodle-ups";
+                  };
+                }
+              ];
+            }
+            {
+              job_name = "node_exporter";
+              static_configs = [
+                {
+                  targets = [ "localhost:${toString config.services.prometheus.exporters.node.port}" ];
+                }
+              ];
+            }
+          ];
         };
 
         services.caddy.virtualHosts = {
