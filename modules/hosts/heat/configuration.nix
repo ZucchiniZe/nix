@@ -13,6 +13,7 @@
       [
         system-default
         alex
+        auto-upgrade
       ]
       ++ [ inputs.disko.nixosModules.disko ];
 

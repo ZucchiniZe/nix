@@ -7,9 +7,9 @@
     in
     {
       imports = with inputs.self.modules.nixos; [ caddy ];
-      
+
       options.homelab = {
-        enable = lib.mkEnableOption "Import all homelab modules";
+        enable = lib.mkEnableOption "Homelab services";
         baseDomain = lib.mkOption { type = lib.types.str; };
         adminUser = lib.mkOption {
           type = lib.types.str;
