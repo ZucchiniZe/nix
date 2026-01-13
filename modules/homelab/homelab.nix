@@ -6,7 +6,12 @@
       cfg = config.homelab;
     in
     {
-      imports = with inputs.self.modules.nixos; [ caddy ];
+      imports = with inputs.self.modules.nixos; [
+        caddy
+        headscale
+        monitoring
+        ups
+      ];
 
       options.homelab = {
         enable = lib.mkEnableOption "Homelab services";
