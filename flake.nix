@@ -16,6 +16,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
     };
+    headplane = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:tale/headplane";
+    };
     home-manager = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
