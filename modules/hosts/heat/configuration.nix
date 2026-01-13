@@ -16,8 +16,6 @@
       ]
       ++ [ inputs.disko.nixosModules.disko ];
 
-    sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-
     networking = {
       hostName = "heat";
       defaultGateway = "10.0.0.1";

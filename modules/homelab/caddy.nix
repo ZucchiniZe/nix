@@ -35,7 +35,7 @@
           '';
 
           virtualHosts = {
-            "alex.bierwagen.io".extraConfig = ''
+            "alex.${config.homelab.baseDomain}".extraConfig = ''
               respond	"hello!"
             '';
           };

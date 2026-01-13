@@ -7,11 +7,11 @@
       system-default
       proxmox-vm
       alex
+      homelab
       caddy
     ];
 
-    sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-
+    homelab.baseDomain = "bierwagen.io";
     homelab.services.caddy.enable = true;
 
     boot.supportedFilesystems = [ "nfs" ];
