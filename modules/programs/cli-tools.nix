@@ -22,6 +22,7 @@ let
         ripgrep
         usbutils
         uv
+        yazi
       ];
     };
 in
