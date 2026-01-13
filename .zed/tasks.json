@@ -1,0 +1,8 @@
+[
+  {
+    "label": "nix flake check",
+    "command": "nix flake check",
+    "reveal": "no_focus",
+    "hide": "on_success",
+  },
+]

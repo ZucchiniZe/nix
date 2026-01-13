@@ -8,7 +8,6 @@
       proxmox-vm
       alex
       homelab
-      caddy
     ];
 
     homelab.baseDomain = "bierwagen.io";
