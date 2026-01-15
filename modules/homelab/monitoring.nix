@@ -104,6 +104,15 @@
                 }
               ];
             }
+            {
+              job_name = "caddy";
+              static_configs = [
+                {
+                  # caddy admin interface is on port 2019
+                  targets = [ "localhost:2019" ];
+                }
+              ];
+            }
           ];
         };
 

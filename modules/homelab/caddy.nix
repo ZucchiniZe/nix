@@ -22,6 +22,7 @@
           80
           443
         ];
+
         services.caddy = {
           enable = true;
           package = pkgs.caddy.withPlugins {
@@ -32,6 +33,9 @@
           globalConfig = ''
             email {$EMAIL}
             acme_dns cloudflare {$CF_APIKEY}
+            metrics {
+            	per_host
+            }
           '';
 
           virtualHosts = {
