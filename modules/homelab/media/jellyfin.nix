@@ -4,6 +4,7 @@
     let
       service = "jellyfin";
       cfg = config.homelab.services.${service};
+      fullUrl = "${service}.${config.homelab.baseDomain}";
     in
     {
       options.homelab.services.${service} = {
@@ -19,7 +20,7 @@
           # };
         };
 
-        services.caddy.virtualHosts."jellyfin.${config.homelab.baseDomain}".extraConfig = ''
+        services.caddy.virtualHosts.${fullUrl}.extraConfig = ''
           	reverse_proxy http://localhost:8096
         '';
       };
