@@ -11,6 +11,7 @@
         headscale
         monitoring
         ups
+        jellyfin
       ];
 
       options.homelab = {

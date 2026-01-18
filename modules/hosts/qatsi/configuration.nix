@@ -15,6 +15,7 @@
     homelab.services.caddy.enable = true;
     homelab.services.ups.enable = true;
     homelab.services.monitoring.enable = true;
+    homelab.services.jellyfin.enable = true;
     # not working yet
     # homelab.services.headscale.enable = true;
 
