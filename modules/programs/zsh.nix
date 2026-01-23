@@ -24,8 +24,9 @@
         setOptions = [
           "GLOB_COMPLETE" # glob expansion
         ];
-        # case insensitive tab completion with fuzzy matchin
         initContent = ''
+          # case insensitive tab completion with fuzzy matching
+
           # 0 -- vanilla completion (abc => abc)
           # 1 -- smart case completion (abc => Abc)
           # 2 -- word flex completion (abc => A-big-Car)
@@ -35,7 +36,10 @@
             "r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}" \
             "r:|?=** m:{a-z\-}={A-Z\_}"g
 
+          # make fn delete actually delete
           bindkey "^[[3~" delete-char
+          # the key next to the next line in history completes the suggestion
+          bindkey "^B" autosuggest-accept
         '';
         shellAliases = {
           gs = "git status -sb";
