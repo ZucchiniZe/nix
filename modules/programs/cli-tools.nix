@@ -12,6 +12,7 @@ let
         iperf3
         jujutsu
         just
+        manix
         neovim
         nh
         nil
