@@ -1,24 +1,6 @@
 { inputs, ... }:
 let
   username = "alex";
-  secure-git =
-    { config, ... }:
-    {
-      # only enable on macos with 1pass
-      programs.git = {
-        signing = {
-          format = "ssh";
-          signer = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-          key = config.constants.alex.sshKey;
-        };
-        settings.url = {
-          "ssh://git@github.com/" = {
-            insteadOf = "https://github.com/";
-          };
-        };
-
-      };
-    };
 in
 {
   flake.modules.homeManager.${username} =
@@ -42,7 +24,8 @@ in
       home-manager.users."${username}" = {
         imports = [
           inputs.self.modules.homeManager."${username}"
-          secure-git
+          # only enable on macos with 1pass
+          inputs.self.modules.homeManager.signed-git
         ];
       };
 
