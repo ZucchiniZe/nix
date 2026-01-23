@@ -35,7 +35,8 @@
             "r:[^[:alpha:]]||[[:alpha:]]=** r:|=* m:{a-z\-}={A-Z\_}" \
             "r:|?=** m:{a-z\-}={A-Z\_}"g
 
-          bindkey "^?" delete-char
+          # bindkey "^?" delete-char
+          bindkey "^[[3~" delete-char
         '';
         shellAliases = {
           gs = "git status -sb";
