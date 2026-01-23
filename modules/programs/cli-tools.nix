@@ -18,6 +18,7 @@ let
         nil
         nixd
         nixfmt
+        nix-index
         pciutils
         restic
         ripgrep
