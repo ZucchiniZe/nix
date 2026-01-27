@@ -11,6 +11,7 @@
     imports =
       with inputs.self.modules.nixos;
       [
+        systemd-boot
         system-default
         alex
         auto-upgrade

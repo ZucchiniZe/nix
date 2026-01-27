@@ -10,15 +10,6 @@
   };
 
   flake.modules.nixos.system-base = {
-    # use systemd boot by default for nixos implementations.
-    # might want to separate into a separate systemd-boot / grub
-    # feature down the line if it becomes an issue
-
-    boot.loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-
     nixpkgs.overlays = [
       (final: _prev: {
         unstable = import inputs.nixpkgs-unstable {
@@ -61,6 +52,7 @@
     '';
 
     networking = {
+      # assume all will use DHCP, might change in the future
       useDHCP = true;
       # basic firewall hardening
       firewall = {
