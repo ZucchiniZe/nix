@@ -15,6 +15,7 @@
   flake.modules.nixos.niri = {
     imports = [ inputs.niri.nixosModules.niri ];
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+    programs.niri.enable = true;
 
     programs.uwsm = {
       enable = true;

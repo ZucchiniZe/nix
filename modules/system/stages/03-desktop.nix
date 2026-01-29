@@ -2,6 +2,7 @@
 {
   flake.module.homeManager.system-desktop = {
     imports = with inputs.self.modules.homeManager; [
+      system-default
       niri
       noctalia
     ];
