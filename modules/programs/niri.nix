@@ -4,18 +4,22 @@
     niri.url = "github:sodiboo/niri-flake";
   };
 
-  flake.modules.homeManager.niri = {
-    imports = [ inputs.niri.homeModules.niri ];
-    programs.niri = {
-      enable = true;
-      # settings = {};
+  flake.modules.homeManager.niri =
+    { lib, pkgs, ... }:
+    {
+      imports = [ inputs.niri.homeModules.niri ];
+      programs.niri = {
+        # package = lib.mkForce pkgs.niri-stable;
+        enable = true;
+        settings = null;
+        config = null;
+      };
     };
-  };
 
   flake.modules.nixos.niri = {
     imports = [ inputs.niri.nixosModules.niri ];
     nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-    programs.niri.enable = true;
+    # programs.niri.enable = true;
 
     programs.uwsm = {
       enable = true;

@@ -2,16 +2,16 @@
 {
   flake.modules.homeManager.system-desktop = {
     imports = with inputs.self.modules.homeManager; [
-      system-default
+      # system-default
       niri
       noctalia
     ];
   };
 
-  flake.modules.nixos.system-desktop = {
-    imports = with inputs.self.modules.nixos; [
-      system-default
-      niri
-    ];
-  };
+  # flake.modules.nixos.system-desktop = {
+  #   imports = with inputs.self.modules.nixos; [
+  #     system-default
+  #     niri
+  #   ];
+  # };
 }
