@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   ...
 }:
 {
@@ -53,7 +54,7 @@
 
     networking = {
       # assume all will use DHCP, might change in the future
-      useDHCP = true;
+      useDHCP = lib.mkDefault true;
       # basic firewall hardening
       firewall = {
         logRefusedConnections = false;
