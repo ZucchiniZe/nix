@@ -1,10 +1,18 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.noctalia = {
-    imports = with inputs.self.modules.homeManager; [ ];
+  flake-file.inputs = {
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  flake.modules.nixos.noctalia = {
-    imports = with inputs.self.modules.nixos; [ ];
+  flake.modules.homeManager.noctalia = {
+    imports = [ inputs.noctalia.homeModules.default ];
+
+    programs.noctalia-shell = {
+      enable = true;
+      settings = { };
+    };
   };
 }

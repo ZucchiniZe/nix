@@ -1,10 +1,30 @@
 { inputs, ... }:
 {
+  flake-file.inputs = {
+    niri.url = "github:sodiboo/niri-flake";
+  };
+
   flake.modules.homeManager.niri = {
-    imports = with inputs.self.modules.homeManager; [ ];
+    imports = [ inputs.niri.homeModules.niri ];
+    programs.niri = {
+      enable = true;
+      # settings = {};
+    };
   };
 
   flake.modules.nixos.niri = {
-    imports = with inputs.self.modules.nixos; [ ];
+    imports = [ inputs.niri.nixosModules.niri ];
+    nixpkgs.overlays = [ inputs.niri.overlays.niri ];
+
+    programs.uwsm = {
+      enable = true;
+      waylandCompositors = {
+        niri = {
+          prettyName = "Niri";
+          comment = "A scrollable-tiling Wayland compositor";
+          binPath = "/run/current-system/sw/bin/niri-session";
+        };
+      };
+    };
   };
 }
