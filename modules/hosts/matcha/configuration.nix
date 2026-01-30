@@ -15,8 +15,12 @@
       imports = [ inputs.self.modules.homeManager.niri ];
 
       programs.niri.settings = {
-        ouputs."DP-1" = {
-          mode = "3440x1440@239.984";
+        outputs."DP-1" = {
+          mode = {
+            height = 1440;
+            width = 3440;
+            refresh = 239.984;
+          };
           variable-refresh-rate = "on-demand";
           focus-at-startup = true;
           position = {
@@ -25,11 +29,11 @@
           };
         };
 
-        ouputs."HDMI-A-1" = {
-          transform = "270";
+        outputs."HDMI-A-1" = {
+          transform.rotation = 270;
           position = {
             x = 0;
-            y = 480;
+            y = 0;
           };
         };
       };
