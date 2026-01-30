@@ -12,13 +12,12 @@
     imports = [ inputs.noctalia.homeModules.default ];
 
     programs.niri = {
-      settings = null;
-      config = null;
+      settings.spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
     };
 
     programs.noctalia-shell = {
       enable = true;
-      systemd.enable = true;
+      # systemd.enable = true;
       # settings = { };
     };
   };
