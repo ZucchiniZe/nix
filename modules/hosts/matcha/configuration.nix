@@ -30,7 +30,7 @@
         };
 
         outputs."HDMI-A-1" = {
-          transform.rotation = 270;
+          transform.rotation = 90;
           position = {
             x = 0;
             y = 0;
