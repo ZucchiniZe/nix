@@ -2,12 +2,23 @@
 {
   flake-file.inputs = {
     niri.url = "github:sodiboo/niri-flake";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   flake.modules.homeManager.niri = {
+    imports = [ inputs.noctalia.homeModules.default ];
+
     programs.niri = {
       settings = null;
       config = null;
+    };
+
+    programs.noctalia-shell = {
+      enable = true;
+      # settings = { };
     };
   };
 

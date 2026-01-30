@@ -5,7 +5,6 @@
       # since its already imported by the alex user and i want to only sometimes use niri
       # system-default
       # niri
-      # noctalia
     ];
   };
 
