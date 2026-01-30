@@ -25,8 +25,9 @@
     };
 
     boot.loader.limine.extraEntries = ''
-          /Windows Boot Manager
-        		protocol: efi_chainload
+         /+Other Bootloaders
+         //Windows Boot Manager
+       	    protocol: efi_chainload
       	   	image_path: guid(eb7bc0d5-50cd-497c-a082-d261afa0b5da):/efi/Microsoft/Boot/bootmgfw.efi
     '';
 
