@@ -18,6 +18,7 @@
 
     programs.noctalia-shell = {
       enable = true;
+      systemd.enable = true;
       # settings = { };
     };
   };
@@ -38,7 +39,7 @@
         enable = true;
         package = pkgs.unstable.uwsm;
         waylandCompositors = {
-          hyprland = {
+          niri = {
             prettyName = "Niri";
             comment = "A scrollable-tiling Wayland compositor";
             binPath = "/run/current-system/sw/bin/niri-session";

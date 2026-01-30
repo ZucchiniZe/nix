@@ -13,6 +13,7 @@
       system-default
       web-tools
       gaming
+      terminal
       niri
       # plasma
     ];
