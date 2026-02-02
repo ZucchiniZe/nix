@@ -25,7 +25,10 @@
       url = "github:nix-community/home-manager/release-25.11";
     };
     import-tree.url = "github:vic/import-tree";
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:sodiboo/niri-flake/very-refactor";
+    };
     nix-darwin = {
       inputs.nixpkgs.follows = "nixpkgs-darwin";
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";

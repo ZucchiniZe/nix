@@ -1,7 +1,10 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   flake-file.inputs = {
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake/very-refactor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,8 +14,10 @@
   flake.modules.homeManager.niri = {
     imports = [ inputs.noctalia.homeModules.default ];
 
-    programs.niri = {
-      # settings.spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
+    # all machines that use niri will share this config, separate config should
+    # be placed in the configuration.nix for that machine
+    programs.niri.settings = {
+      includes = lib.mkAfter [ ./niri/binds.kdl ];
     };
 
     programs.noctalia-shell = {
