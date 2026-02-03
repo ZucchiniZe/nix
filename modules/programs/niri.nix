@@ -17,7 +17,7 @@
     # all machines that use niri will share this config, separate config should
     # be placed in the configuration.nix for that machine
     programs.niri.settings = {
-      includes = lib.mkAfter [ ./niri/binds.kdl ];
+      # includes = lib.mkAfter [ ./niri/binds.kdl ];
     };
 
     programs.noctalia-shell = {
