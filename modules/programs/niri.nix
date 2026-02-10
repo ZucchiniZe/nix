@@ -11,20 +11,22 @@
     };
   };
 
-  flake.modules.homeManager.niri = {
-    imports = [ inputs.noctalia.homeModules.default ];
+  flake.modules.homeManager.niri =
+    { pkgs, ... }:
+    {
+      imports = [ inputs.noctalia.homeModules.default ];
 
-    # all machines that use niri will share this config, separate config should
-    # be placed in the configuration.nix for that machine
-    programs.niri.settings = {
-      includes = lib.mkAfter [ ./niri/binds.kdl ];
-    };
+      # all machines that use niri will share this config, separate config should
+      # be placed in the configuration.nix for that machine
+      programs.niri.settings = {
+        includes = [ { path = "${pkgs.niri.doc}/share/doc/niri/default-config.kdl"; } ];
+      };
 
-    programs.noctalia-shell = {
-      enable = true;
-      systemd.enable = true;
+      programs.noctalia-shell = {
+        enable = true;
+        systemd.enable = true;
+      };
     };
-  };
 
   flake.modules.nixos.niri =
     { pkgs, ... }:
