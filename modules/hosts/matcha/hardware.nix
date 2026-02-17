@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.matcha =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       boot.initrd.availableKernelModules = [
         "nvme"
@@ -26,7 +26,7 @@
       hardware.graphics.enable = true;
       hardware.nvidia = {
         # enable beta drivers
-        # package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package = config.boot.kernelPackages.nvidiaPackages.beta;
         open = true;
         modesetting.enable = true;
         nvidiaSettings = true;
