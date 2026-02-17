@@ -45,8 +45,9 @@
       };
 
       networking.hostName = "matcha";
-      networking.networkmanager.enable = true;
 
+      # wireless protocols
+      networking.networkmanager.enable = true;
       hardware.bluetooth.enable = true;
 
       # dont delete - required for backwards compat checks

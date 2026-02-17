@@ -9,7 +9,7 @@
       "sd_mod"
     ];
     boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" ];
+    boot.kernelModules = [ "kvm-amd" "mt7921e" ];
     boot.extraModulePackages = [ ];
     # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
