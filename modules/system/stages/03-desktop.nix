@@ -12,6 +12,7 @@
       web-tools
       gaming
       terminal
+      fonts
     ];
   };
 }
