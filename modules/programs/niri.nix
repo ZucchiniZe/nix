@@ -13,6 +13,16 @@
 
   flake.modules.homeManager.niri =
     { pkgs, ... }:
+    let
+      noctaliaSpawn =
+        commands:
+        [
+          "noctalia-shell"
+          "ipc"
+          "call"
+        ]
+        ++ commands;
+    in
     {
       imports = [ inputs.noctalia.homeModules.default ];
 
@@ -20,6 +30,44 @@
       # be placed in the configuration.nix for that machine
       programs.niri.settings = {
         includes = [ { path = "${pkgs.niri.doc}/share/doc/niri/default-config.kdl"; } ];
+        binds = {
+          "Mod+Shift+Comma" = {
+            hotkey-overlay.title = "Noctalia: Settings";
+            action.spawn = noctaliaSpawn [
+              "settings"
+              "toggle"
+            ];
+          };
+          "Mod+Shift+C" = {
+            hotkey-overlay.title = "Noctalia: Control Center";
+            action.spawn = noctaliaSpawn [
+              "controlCenter"
+              "toggle"
+            ];
+          };
+          # "Mod+T" = { hotkey-overlay.title = "Terminal" };
+          "Mod+D" = {
+            hotkey-overlay.title = "Noctalia: Launcher";
+            action.spawn = noctaliaSpawn [
+              "launcher"
+              "toggle"
+            ];
+          };
+          "Mod+Space" = {
+            hotkey-overlay.title = "Noctalia: Launcher";
+            action.spawn = noctaliaSpawn [
+              "launcher"
+              "toggle"
+            ];
+          };
+          "Super+Alt+L" = {
+            hotkey-overlay.title = "Noctalia: Lock Screen";
+            action.spawn = noctaliaSpawn [
+              "lockScreen"
+              "lock"
+            ];
+          };
+        };
       };
 
       programs.noctalia-shell = {
