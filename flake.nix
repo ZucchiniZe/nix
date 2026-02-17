@@ -41,6 +41,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia-shell";
     };
+    sf-mono-liga-src = {
+      flake = false;
+      url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+    };
     sops-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Mic92/sops-nix";

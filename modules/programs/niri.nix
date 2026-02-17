@@ -1,4 +1,4 @@
-{ inputs, lib, ... }:
+{ inputs, ... }:
 {
   flake-file.inputs = {
     niri = {

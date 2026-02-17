@@ -38,6 +38,7 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "pipe-operators"
         # "allow-import-from-derivation"
       ];
 

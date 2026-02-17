@@ -13,9 +13,6 @@
         alex
       ];
 
-      # use the latest unstable kernel for the ABSOLUTE BLEEDING EDGE
-      boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
-
       home-manager.users."alex" = {
         imports = [ inputs.self.modules.homeManager.niri ];
 
