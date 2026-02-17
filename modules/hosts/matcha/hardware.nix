@@ -19,6 +19,7 @@
       ];
       boot.extraModulePackages = [ ];
       # hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+      hardware.enableRedistributableFirmware = true;
 
       # enable nvidia drivers
       services.xserver.videoDrivers = [ "nvidia" ];
