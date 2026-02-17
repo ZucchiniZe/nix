@@ -20,6 +20,7 @@
     ];
 
     nixpkgs.config.allowUnfree = true;
+    hardware.enableRedistributableFirmware = true;
 
     nix.settings = {
       substituters = [

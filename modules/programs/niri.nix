@@ -36,6 +36,9 @@
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri-unstable;
 
+      # for monitor brightness control
+      environment.systemPackages = [ pkgs.ddcutil ];
+
       environment.pathsToLink = [
         "/share/applications"
         "/share/xdg-desktop-portal"
