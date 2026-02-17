@@ -12,7 +12,7 @@
       ];
       boot.initrd.kernelModules = [ ];
       # use the latest unstable kernel for the ABSOLUTE BLEEDING EDGE
-      boot.kernelPackages = pkgs.unstable.linuxPackages_latest;
+      boot.kernelPackages = pkgs.unstable.linuxPackages_6_18;
       boot.kernelModules = [
         "kvm-amd"
         "mt7921e"
