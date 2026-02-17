@@ -17,7 +17,7 @@
         imports = [ inputs.self.modules.homeManager.niri ];
 
         programs.niri.settings = {
-          outputs."DP-1" = {
+          outputs."DP-4" = {
             mode = {
               height = 1440;
               width = 3440;
@@ -31,7 +31,7 @@
             };
           };
 
-          outputs."HDMI-A-1" = {
+          outputs."HDMI-A-2" = {
             transform.rotation = 90;
             position = {
               x = 0;
