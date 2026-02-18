@@ -57,6 +57,7 @@
 
       programs.zed-editor = {
         enable = true;
+        package = pkgs.unstable.zed-editor;
         extensions = [
           "elixir"
           "nix"
