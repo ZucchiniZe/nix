@@ -57,7 +57,7 @@ in
       users.users."${username}" = {
         isNormalUser = true;
 
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "i2c" ];
         openssh.authorizedKeys.keys = [ config.constants.alex.sshKey ];
         shell = pkgs.zsh;
       };
