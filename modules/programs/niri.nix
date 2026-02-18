@@ -12,7 +12,7 @@
   };
 
   flake.modules.homeManager.niri =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     let
       noctaliaSpawn =
         commands:
@@ -30,6 +30,10 @@
       # be placed in the configuration.nix for that machine
       programs.niri.settings = {
         includes = [ { path = "${pkgs.niri.doc}/share/doc/niri/default-config.kdl"; } ];
+        xwayland-satellite = {
+          enable = true;
+          path = lib.getExe pkgs.xwayland-satellite-unstable;
+        };
         binds = {
           "Mod+Shift+Comma" = {
             hotkey-overlay.title = "Noctalia: Settings";
