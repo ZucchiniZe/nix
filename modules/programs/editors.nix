@@ -38,7 +38,6 @@
           };
         };
         settings = {
-          theme = "penumbra+";
           editor = {
             line-number = "relative";
             lsp.display-messages = true;
@@ -63,11 +62,6 @@
           "nix"
         ];
         userSettings = {
-          theme = {
-            mode = "system";
-            light = "Catppuccin Latte";
-            dark = "Catppuccin Frappé";
-          };
           vim_mode = true;
           base_keymap = "Emacs";
           ui_font_size = 16;

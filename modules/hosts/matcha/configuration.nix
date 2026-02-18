@@ -12,7 +12,10 @@
     ];
 
     home-manager.users."alex" = {
-      imports = [ inputs.self.modules.homeManager.niri ];
+      imports = with inputs.self.modules.homeManager; [
+        system-desktop
+        niri
+      ];
 
       programs.niri.settings = {
         outputs."DP-4" = {
