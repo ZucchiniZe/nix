@@ -1,22 +1,15 @@
 { inputs, ... }:
 {
-  flake-file.inputs = {
-    disko.url = "github:nix-community/disko/latest";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-  };
-
   flake.nixosConfigurations = inputs.self.lib.mkNixos "aarch64-linux" "heat";
 
   flake.modules.nixos.heat = {
-    imports =
-      with inputs.self.modules.nixos;
-      [
-        systemd-boot
-        system-default
-        alex
-        auto-upgrade
-      ]
-      ++ [ inputs.disko.nixosModules.disko ];
+    imports = with inputs.self.modules.nixos; [
+      systemd-boot
+      system-default
+      alex
+      auto-upgrade
+      disko
+    ];
 
     networking = {
       hostName = "heat";

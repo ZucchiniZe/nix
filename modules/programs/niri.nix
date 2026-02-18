@@ -87,6 +87,7 @@
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri-unstable;
+      niri-flake.cache.enable = true;
 
       # for monitor brightness control
       environment.systemPackages = [ pkgs.ddcutil ];
