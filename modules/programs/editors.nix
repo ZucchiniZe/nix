@@ -2,7 +2,6 @@
   flake.modules.homeManager.editors =
     { pkgs, ... }:
     {
-
       programs.neovim = {
         enable = true;
         defaultEditor = true;
@@ -52,6 +51,41 @@
               "collapse_selection"
               "keep_primary_selection"
             ];
+          };
+        };
+      };
+
+      programs.zed-editor = {
+        enable = true;
+        extensions = [
+          "elixir"
+          "nix"
+        ];
+        userSettings = {
+          theme = {
+            mode = "system";
+            light = "Catppuccin Latte";
+            dark = "Catppuccin Frappé";
+          };
+          vim_mode = true;
+          base_keymap = "Emacs";
+          ui_font_size = 16;
+          buffer_font_size = 14;
+          autosave = "on_focus_change";
+          indent_guides = {
+            active_line_width = 2;
+            coloring = "indent_aware";
+          };
+          languages = {
+            "Nix" = {
+              indent_guides = {
+                active_line_width = 2;
+                background_coloring = "disabled";
+                coloring = "indent_aware";
+              };
+              hard_tabs = true;
+              tab_size = 2;
+            };
           };
         };
       };
