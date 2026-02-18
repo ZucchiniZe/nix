@@ -24,6 +24,7 @@ let
         ripgrep
         usbutils
         uv
+        vulkan-tools
         yazi
       ];
     };
