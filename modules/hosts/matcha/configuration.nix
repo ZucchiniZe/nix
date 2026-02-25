@@ -40,8 +40,15 @@
           };
         };
 
-        input.mouse = {
-          accel-speed = -0.2;
+        input = {
+          touchpad = {
+            natural-scroll = false;
+            drag = true;
+            scroll-factor = 0.8;
+          };
+          mouse = {
+            accel-speed = -0.3;
+          };
         };
       };
     };
