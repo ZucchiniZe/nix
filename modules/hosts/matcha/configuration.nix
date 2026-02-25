@@ -39,6 +39,10 @@
             y = 0;
           };
         };
+
+        input.mouse = {
+          accel-speed = -0.2;
+        };
       };
     };
 

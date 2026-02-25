@@ -34,6 +34,10 @@
           enable = true;
           path = lib.getExe pkgs.xwayland-satellite-unstable;
         };
+        input = {
+          focus-follows-mouse.enable = true;
+          warp-mouse-to-focus.enable = true;
+        };
         binds = {
           "Mod+Shift+Comma" = {
             hotkey-overlay.title = "Noctalia: Settings";
