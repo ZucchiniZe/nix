@@ -75,6 +75,27 @@
               "lock"
             ];
           };
+          "XF86AudioPlay" = {
+            allow-when-locked = true;
+            actions.spawn = noctaliaSpawn [
+              "media"
+              "playPause"
+            ];
+          };
+          "XF86AudioNext" = {
+            allow-when-locked = true;
+            actions.spawn = noctaliaSpawn [
+              "media"
+              "next"
+            ];
+          };
+          "XF86AudioPrev" = {
+            allow-when-locked = true;
+            actions.spawn = noctaliaSpawn [
+              "media"
+              "previous"
+            ];
+          };
         };
       };
 

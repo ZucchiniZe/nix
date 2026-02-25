@@ -13,8 +13,8 @@
         {
           enable = true;
           extraConfig = ''
-            		Host *
-               			IdentityAgent ${onePassPath}
+            Host *
+              IdentityAgent ${onePassPath}
           '';
         };
     };
