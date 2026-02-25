@@ -5,6 +5,7 @@
       system-default
       _1password
       theme
+      terminal
     ];
   };
 
@@ -21,7 +22,6 @@
       _1password
       web-tools
       gaming
-      terminal
       fonts
     ];
   };
