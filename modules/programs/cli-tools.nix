@@ -19,6 +19,7 @@ let
         nixd
         nixfmt
         nix-index
+        nix-tree
         pciutils
         restic
         ripgrep
