@@ -133,18 +133,6 @@
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri-unstable;
 
-      programs.uwsm = {
-        enable = true;
-        package = pkgs.unstable.uwsm;
-        waylandCompositors = {
-          niri = {
-            prettyName = "Niri";
-            comment = "A scrollable-tiling Wayland compositor";
-            binPath = "/run/current-system/sw/bin/niri-session";
-          };
-        };
-      };
-
       services.nirinit = {
         enable = true;
         settings = {
