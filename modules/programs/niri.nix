@@ -5,6 +5,10 @@
       url = "github:sodiboo/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nirinit = {
+      url = "github:amaanq/nirinit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,7 +28,9 @@
         ++ commands;
     in
     {
-      imports = [ inputs.noctalia.homeModules.default ];
+      imports = [
+        inputs.noctalia.homeModules.default
+      ];
 
       # all machines that use niri will share this config, separate config should
       # be placed in the configuration.nix for that machine
@@ -108,19 +114,24 @@
   flake.modules.nixos.niri =
     { pkgs, ... }:
     {
-      imports = [ inputs.niri.nixosModules.niri ];
+      imports = [
+        inputs.niri.nixosModules.niri
+        inputs.nirinit.nixosModules.nirinit
+      ];
+
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-      programs.niri.enable = true;
-      programs.niri.package = pkgs.niri-unstable;
       niri-flake.cache.enable = true;
 
-      # for monitor brightness control
+      # for monitor brightness control (also remember to configure i2c)
       environment.systemPackages = [ pkgs.ddcutil ];
 
       environment.pathsToLink = [
         "/share/applications"
         "/share/xdg-desktop-portal"
       ];
+
+      programs.niri.enable = true;
+      programs.niri.package = pkgs.niri-unstable;
 
       programs.uwsm = {
         enable = true;
@@ -131,6 +142,13 @@
             comment = "A scrollable-tiling Wayland compositor";
             binPath = "/run/current-system/sw/bin/niri-session";
           };
+        };
+      };
+
+      services.nirinit = {
+        enable = true;
+        settings = {
+          skip.apps = [ "steam" ];
         };
       };
     };

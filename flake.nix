@@ -30,6 +30,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:sodiboo/niri-flake/very-refactor";
     };
+    nirinit = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:amaanq/nirinit";
+    };
     nix-darwin = {
       inputs.nixpkgs.follows = "nixpkgs-darwin";
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
@@ -50,7 +54,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Mic92/sops-nix";
     };
-    systems.url = "github:nix-systems/default";
   };
 
 }
