@@ -57,6 +57,7 @@
 
       networking.hostName = "matcha";
 
+      # add a patched wine for grandMA3 to work. only works up to 2.3.1.1, 2.3.2.0 is broken
       nixpkgs.overlays = [
         (final: prev: {
           wineWow64Packages.staging_11 = prev.wineWow64Packages.staging_11.overrideAttrs (oldAttrs: {
@@ -64,8 +65,8 @@
           });
         })
       ];
-
       environment.systemPackages = [ pkgs.wineWow64Packages.staging_11 pkgs.unstable.winetricks ];
+
       # wireless protocols
       networking.networkmanager.enable = true;
       hardware.bluetooth.enable = true;
