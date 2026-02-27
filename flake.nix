@@ -46,6 +46,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia-shell";
     };
+    packages = {
+      flake = false;
+      url = "path:./packages";
+    };
+    pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
     sf-mono-liga-src = {
       flake = false;
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";

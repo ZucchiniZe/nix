@@ -19,7 +19,10 @@
           determinate
           secrets
         ]
-        ++ [ inputs.self.modules.generic.constants ];
+        ++ (with inputs.self.modules.generic; [
+          constants
+          pkgs-by-name
+        ]);
 
       system.configurationRevision = config.constants.gitRevision;
     };
@@ -35,7 +38,10 @@
           determinate
           secrets
         ]
-        ++ [ inputs.self.modules.generic.constants ];
+        ++ (with inputs.self.modules.generic; [
+          constants
+          pkgs-by-name
+        ]);
 
       system.configurationRevision = config.constants.gitRevision;
     };
