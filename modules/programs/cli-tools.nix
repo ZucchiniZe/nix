@@ -20,6 +20,7 @@ let
         nixfmt
         nix-index
         nix-tree
+        p7zip
         pciutils
         restic
         ripgrep
