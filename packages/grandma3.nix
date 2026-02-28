@@ -25,14 +25,16 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   buildPhase = ''
-    ls -l
 
     ls -l $src
     ls -l $out
   '';
 
-  # installPhase = ''
-  # '';
+  installPhase = ''
+    makeWrapper $out \
+      --set HOSTTYPE onPC \
+      --prefix LD_LIBRARY_PATH : 
+  '';
 
   meta = {
     description = "Lighting control software";

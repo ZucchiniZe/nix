@@ -17,6 +17,8 @@
             {
               name = "nix";
               auto-format = true;
+              language-servers = [ "nixd" ];
+              formatter.command = "nixfmt";
             }
           ];
           language-server.nixd = {
@@ -41,6 +43,8 @@
         settings = {
           editor = {
             line-number = "relative";
+            rulers = [80];
+            indent-guides.render = true;
             lsp.display-messages = true;
           };
           keys.normal = {
