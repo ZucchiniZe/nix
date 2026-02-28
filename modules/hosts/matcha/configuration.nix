@@ -9,7 +9,7 @@
         limine-boot
         system-desktop
         niri
-        # plasma
+        plasma
         alex
       ];
 
