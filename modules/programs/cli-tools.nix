@@ -4,6 +4,7 @@ let
     {
       environment.systemPackages = with pkgs; [
         bat
+        btop-cuda
         eza
         fastfetch
         fd

@@ -43,7 +43,7 @@
         settings = {
           editor = {
             line-number = "relative";
-            rulers = [80];
+            rulers = [ 80 ];
             indent-guides.render = true;
             lsp.display-messages = true;
           };
