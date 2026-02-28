@@ -3,6 +3,8 @@ let
   username = "alex";
 in
 {
+  flake.homeConfigurations = inputs.self.lib.mkHomeManager "x86_64-linux" "alex";
+  
   flake.modules.homeManager.${username} =
     { pkgs, ... }:
     {

@@ -24,15 +24,16 @@
             args = [ "--semantic-tokens=true" ];
             config.nixd =
               let
-                myFlake = "(builtins.getFlake toString /Users/alex/Developer/01_nix)";
-                darwinOpts = "${myFlake}.darwinConfigurations.ab-m4mbp.options";
+                flakePath = if pkgs.stdenv.isDarwin then "/Users/alex/Developer/01_nix" else "/home/alex/nix";
+                myFlake = "(builtins.getFlake toString ${flakePath})";
               in
               {
                 formatting.command = "nixfmt";
                 nixpkgs.expr = "import ${myFlake}.inputs.nixpkgs { }";
                 options = {
-                  darwin.expr = darwinOpts;
-                  home-manager.expr = "${darwinOpts}.home-manager.users.type.getSubOptions []";
+                  nixos.expr = "${myFlake}.nixosConfigurations.matcha.options";
+                  darwin.expr = "${myFlake}.darwinConfigurations.ab-m4mbp.options";
+                  home-manager.expr = "${myFlake}.homeConfigurations.alex.options";
                 };
               };
           };
