@@ -13,6 +13,10 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    silentSDDM = {
+      url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   flake.modules.homeManager.niri =
@@ -117,6 +121,7 @@
       imports = [
         inputs.niri.nixosModules.niri
         inputs.nirinit.nixosModules.nirinit
+        inputs.silentSDDM.nixosModules.default
       ];
 
       nixpkgs.overlays = [ inputs.niri.overlays.niri ];
@@ -132,6 +137,11 @@
 
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri-unstable;
+
+      programs.silentSDDM = {
+        enable = true;
+        theme = "catppuccin-frappe";
+      };
 
       services.nirinit = {
         enable = true;

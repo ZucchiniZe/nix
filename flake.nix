@@ -55,6 +55,10 @@
       flake = false;
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
     };
+    silentSDDM = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:uiriansan/SilentSDDM";
+    };
     sops-nix = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Mic92/sops-nix";
