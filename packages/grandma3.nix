@@ -5,7 +5,7 @@
   unzip,
   libxml2,
   makeWrapper,
-  autoPatchelf,
+  auto-patchelf,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -24,7 +24,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     unzip
     libxml2
     makeWrapper
-    autoPatchelf
+    auto-patchelf
   ];
 
   sourceRoot = ".";
@@ -43,15 +43,16 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   '';
 
   installPhase =
-  let
-    versionPath = "MALightingTechnology/gma3_${finalAttrs.shortVersion}";
-  in ''
-    mkdir -p $out/bin
+    let
+      versionPath = "MALightingTechnology/gma3_${finalAttrs.shortVersion}";
+    in
+    ''
+      mkdir -p $out/bin
 
-    makeWrapper "$out/${versionPath}/console/bin/app_gma3" "$out/bin/gma3" \
-      --set HOSTTYPE onPC \
-      --prefix LD_LIBRARY_PATH : $out/${versionPath}/shared/third_party
-  '';
+      makeWrapper "$out/${versionPath}/console/bin/app_gma3" "$out/bin/gma3" \
+        --set HOSTTYPE onPC \
+        --prefix LD_LIBRARY_PATH : $out/${versionPath}/shared/third_party
+    '';
 
   meta = {
     description = "Lighting control software";
