@@ -4,11 +4,14 @@
   requireFile,
   unzip,
   libxml2,
+  makeWrapper,
+  autoPatchelf,
 }:
 
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "grandMA3-onPC";
   version = "2.3.2.0";
+  shortVersion = "2.3.2";
   system = "x86_64-linux";
 
   src = requireFile {
@@ -20,12 +23,17 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     unzip
     libxml2
+    makeWrapper
+    autoPatchelf
   ];
 
   sourceRoot = ".";
 
   postUnpack = ''
-    cp -r ma $out
+    cd ma
+
+    xmllint -xpath '//GMA3/ReleaseFile/MAPacket[not(contains(@Type, "sys")) and not(contains(@Type, "arm")) and not(contains(@Type, "gma2"))]/@Destination' ./release_stick_*.xml | sed "s/ Destination=/mkdir -p /" | sed "s|/home/ma|$out|" | sh
+    xmllint -xpath '//GMA3/ReleaseFile/MAPacket[not(contains(@Type, "sys")) and not(contains(@Type, "arm")) and not(contains(@Type, "gma2"))]/@*[name()="Name" or name()="Destination"]' ./release_stick_*.xml | sed "s/ Destination=/ -d /" | tr -d "\n" | sed "s/ Name=/\nunzip -o /g" | sed "s|/home/ma|$out|" | sh
   '';
 
   buildPhase = ''
@@ -34,10 +42,15 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     ls -l $out
   '';
 
-  installPhase = ''
-    makeWrapper $out \
+  installPhase =
+  let
+    versionPath = "MALightingTechnology/gma3_${finalAttrs.shortVersion}";
+  in ''
+    mkdir -p $out/bin
+
+    makeWrapper "$out/${versionPath}/console/bin/app_gma3" "$out/bin/gma3" \
       --set HOSTTYPE onPC \
-      --prefix LD_LIBRARY_PATH :
+      --prefix LD_LIBRARY_PATH : $out/${versionPath}/shared/third_party
   '';
 
   meta = {
