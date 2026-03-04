@@ -9,6 +9,7 @@
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "grandMA3-onPC";
   version = "2.3.2.0";
+  system = "x86_64-linux";
 
   src = requireFile {
     name = "grandMA3_stick_v2.3.2.0.zip";
@@ -16,7 +17,10 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     sha256 = "4bff734150e5fd43409930cf7e1a8d0e95ed7f6bdbec55afb55de989beec56a3";
   };
 
-  nativeBuildInputs = [ unzip libxml2 ];
+  nativeBuildInputs = [
+    unzip
+    libxml2
+  ];
 
   sourceRoot = ".";
 
@@ -33,7 +37,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   installPhase = ''
     makeWrapper $out \
       --set HOSTTYPE onPC \
-      --prefix LD_LIBRARY_PATH : 
+      --prefix LD_LIBRARY_PATH :
   '';
 
   meta = {

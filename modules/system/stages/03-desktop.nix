@@ -12,6 +12,7 @@
   flake.modules.darwin.system-desktop = {
     imports = with inputs.self.modules.darwin; [
       system-default
+      desktop-tools
       _1password
     ];
   };
@@ -19,8 +20,8 @@
   flake.modules.nixos.system-desktop = {
     imports = with inputs.self.modules.nixos; [
       system-default
+      desktop-tools
       _1password
-      web-tools
       gaming
       fonts
     ];
