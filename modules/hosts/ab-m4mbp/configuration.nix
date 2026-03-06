@@ -8,6 +8,10 @@
       alex
     ];
 
+    home-manager.users."alex".imports = with inputs.self.modules.homeManager; [
+      system-desktop
+    ];
+
     networking.hostName = "ab-m4mbp";
 
     system = {

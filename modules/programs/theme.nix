@@ -3,6 +3,7 @@
   flake-file.inputs = {
     catppuccin.url = "github:catppuccin/nix";
   };
+
   flake.modules.homeManager.theme = {
     imports = [ inputs.catppuccin.homeModules.catppuccin ];
 
@@ -10,6 +11,7 @@
       flavor = "frappe";
       alacritty.enable = true;
       bat.enable = true;
+      delta.enable = true;
       eza.enable = true;
       helix.enable = true;
       nvim.enable = true;
