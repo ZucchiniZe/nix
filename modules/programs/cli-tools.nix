@@ -11,6 +11,7 @@ let
         git
         home-manager
         iperf3
+        jq
         jujutsu
         just
         manix
@@ -25,6 +26,7 @@ let
         pciutils
         restic
         ripgrep
+        sops
         usbutils
         uv
         vulkan-tools
