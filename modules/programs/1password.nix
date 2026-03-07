@@ -1,6 +1,11 @@
 {
   flake.modules.homeManager._1password =
-    { pkgs, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     {
       programs.ssh =
         let
@@ -13,10 +18,28 @@
         {
           enable = true;
           extraConfig = ''
-            Host *
-              IdentityAgent ${onePassPath}
+          Host *
+            IdentityAgent ${onePassPath}
+
+          Host github.com
+            HostName github.com
+            User git
           '';
         };
+
+      programs.git = {
+        signing = {
+          format = "ssh";
+          signer = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
+          key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPBRWC7uEA0ysNzYHMERozjdRuPUSD5kgwwmDH6DHmr";
+          signByDefault = true;
+        };
+        settings.url = {
+          "ssh://git@github.com/" = {
+            insteadOf = "https://github.com/";
+          };
+        };
+      };
     };
 
   flake.modules.darwin._1password =
