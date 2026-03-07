@@ -13,49 +13,35 @@
         system-desktop
       ];
 
-      programs.ssh.extraConfig = ''
-      Host playtime
-        HostName playtime.orca-char.ts.net
-        # ssh for synology nas is on port 28
-        # ssh for proxmox qdevice is on port 22
-        Port 28
-        User alex
-
-      Host union
-        HostName union.orca-char.ts.net
-        User root
-
-      Host santiago
-        HostName 10.1.1.35
-        User root
-
-      Host docker
-        HostName 10.1.15.127
-        User root
-
-      Host monitoring
-        HostName 10.1.15.128
-        User root
-
-      Host caddy
-        HostName 10.1.15.109
-        User root
-
-      Host whatbox
-        HostName mimas.whatbox.ca
-        User zucchinize
-
-      Host nowhere
-        HostName nowhere.noodle.sh
-        User root
-
-      Host heat
-        HostName heat.noodle.sh
-
-      Host *sr.ht
-        IdentityFile ~/.ssh/srht.id_rsa
-        PreferredAuthentications publickey
-      '';
+      programs.ssh.matchBlocks =
+        let
+          rootUser = host: {
+            user = "root";
+            hostname = host;
+          };
+        in
+        {
+          playtime = {
+            hostname = "playtime.orca-char.ts.net";
+            # ssh for synology nas is on port 28
+            # ssh for proxmox qdevice is on port 22
+            port = 28;
+            user = "alex";
+          };
+          union = rootUser "union.orca-char.ts.net";
+          santiago = rootUser "10.1.1.35";
+          docker = rootUser "10.1.15.127";
+          monitoring = rootUser "10.1.15.128";
+          caddy = rootUser "10.1.15.109";
+          whatbox = {
+            hostname = "mimas.whatbox.ca";
+            user = "zucchinize";
+          };
+          nowhere = rootUser "nowhere.noodle.sh";
+          heat = {
+            hostname = "heat.noodle.sh";
+          };
+        };
     };
 
     networking.hostName = "ab-m4mbp";
