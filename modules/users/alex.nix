@@ -27,7 +27,7 @@ in
         imports = [
           inputs.self.modules.homeManager."${username}"
           # only enable on macos with 1pass
-          inputs.self.modules.homeManager.signed-git
+          # inputs.self.modules.homeManager.signed-git
         ];
       };
 
