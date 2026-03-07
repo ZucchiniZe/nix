@@ -20,7 +20,7 @@
         ];
 
         programs.niri.settings = {
-          outputs."DP-4" = {
+          outputs."DP-1" = {
             mode = {
               height = 1440;
               width = 3440;
@@ -34,7 +34,7 @@
             };
           };
 
-          outputs."HDMI-A-2" = {
+          outputs."HDMI-A-1" = {
             transform.rotation = 90;
             position = {
               x = 0;
