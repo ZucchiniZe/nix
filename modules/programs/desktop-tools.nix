@@ -17,7 +17,7 @@
     {
       imports = with inputs.self.modules.nixos; [ ];
       environment.systemPackages = with pkgs; [
-        rustdesk-flutter
+        unstable.rustdesk-flutter
         firefox-devedition
         signal-desktop
       ];
