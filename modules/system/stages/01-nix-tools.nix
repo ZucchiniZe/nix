@@ -4,7 +4,7 @@
     imports = [
       inputs.self.modules.homeManager.system-base
       inputs.self.modules.homeManager.secrets
-      inputs.self.modules.generic.constants
+      # inputs.self.modules.homeManager.constants
     ];
   };
 
