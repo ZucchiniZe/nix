@@ -4,13 +4,13 @@
     {
       programs.neovim = {
         enable = true;
-        defaultEditor = true;
         vimAlias = true;
         # plugins = [ pkgs.vimPlugins.nvim-tree-lua ];
       };
 
       programs.helix = {
         enable = true;
+        defaultEditor = true;
         extraPackages = [ pkgs.nixd ];
         languages = {
           languages = [
