@@ -17,6 +17,7 @@
         in
         {
           enable = true;
+          enableDefaultConfig = false;
           matchBlocks = {
             "*" = {
               identityAgent = onePassPath;
