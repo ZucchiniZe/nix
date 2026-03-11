@@ -36,13 +36,11 @@ let
 in
 {
   flake.modules.homeManager.cli-tools =
-    # { pkgs, ... }:
-    # {
-    #   home.packages = with pkgs; [
-    #   ];
+    { pkgs, ... }:
     {
       programs.nh = {
         enable = true;
+        package = pkgs.unstable.nh;
         flake = "/home/alex/nix";
         darwinFlake = "/Users/alex/Developer/01_nix";
       };
