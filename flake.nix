@@ -5,64 +5,72 @@
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
+  nixConfig = {
+    extra-substituters = [ "https://niri.cachix.org" ];
+    extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+  };
+
   inputs = {
     catppuccin.url = "github:catppuccin/nix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     headplane = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:tale/headplane";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:sodiboo/niri-flake/very-refactor";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nirinit = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:amaanq/nirinit";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      inputs.nixpkgs.follows = "nixpkgs-darwin";
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-darwin";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     packages = {
-      flake = false;
       url = "path:./packages";
+      flake = false;
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
     sf-mono-liga-src = {
-      flake = false;
       url = "github:shaunsingh/SFMono-Nerd-Font-Ligaturized";
+      flake = false;
     };
     silentSDDM = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:uiriansan/SilentSDDM";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     sops-nix = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
 }

@@ -30,7 +30,7 @@
             focus-at-startup = true;
             position = {
               x = 1080;
-              y = 0;
+              y = 480;
             };
           };
 

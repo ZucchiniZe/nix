@@ -20,7 +20,6 @@ let
         nil
         nixd
         nixfmt
-        nix-index
         nix-tree
         p7zip
         pciutils
@@ -31,13 +30,25 @@ let
         uv
         vulkan-tools
         yazi
+        zellij
       ];
     };
 in
+{ inputs, ... }:
 {
+  flake-file.inputs = {
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+  };
+
   flake.modules.homeManager.cli-tools =
     { pkgs, lib, ... }:
     {
+      imports = [ inputs.nix-index-database.homeModules.default ];
+
+      programs.nix-index.enable = true;
+      programs.nix-index-database.comma.enable = true;
+
       programs.nh = {
         enable = true;
         # package = lib.mkForce pkgs.unstable.nh;
