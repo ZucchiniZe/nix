@@ -14,7 +14,7 @@
       # as soon as we can
       boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
       # use the latest unstable kernel for the ABSOLUTE BLEEDING EDGE
-      boot.kernelPackages = pkgs.unstable.linuxPackages_6_18;
+      boot.kernelPackages = pkgs.unstable.linuxPackages_6_19;
       boot.kernelModules = [
         "kvm-amd"
         "mt7921e"
