@@ -6,6 +6,9 @@
 # should be easy since it looks like its a self zipped thing
 # install with wine
 # use this as a template https://github.com/NixOS/nixpkgs/pull/7597
+#
+# pkgs.nsis exists for the nullsoft installer as a way to script the install if
+# i can figure out a consistent way to download without having to host myself
 
 {
   pkgs ? import <nixpkgs> { },
