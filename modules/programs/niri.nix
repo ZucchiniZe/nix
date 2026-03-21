@@ -27,6 +27,7 @@
   flake.modules.homeManager.niri =
     { lib, pkgs, ... }:
     let
+      hyper = "Super+Shift+Ctrl+Alt";
       noctaliaSpawn =
         commands:
         [
@@ -54,7 +55,9 @@
           focus-follows-mouse.max-scroll-amount = "10%";
           warp-mouse-to-focus.enable = true;
         };
+        # layout.
         binds = {
+          "${hyper}+R".action.spawn = [ "firefox-devedition" ];
           "Mod+Shift+Comma" = {
             hotkey-overlay.title = "Noctalia: Settings";
             action.spawn = noctaliaSpawn [
@@ -140,6 +143,12 @@
         "/share/applications"
         "/share/xdg-desktop-portal"
       ];
+
+      xdg.portal.config = {
+        niri = {
+          "org.freedesktop.impl.portal.RemoteDesktop" = [ "gnome" ];
+        };
+      };
 
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri-unstable;

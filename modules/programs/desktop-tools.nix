@@ -20,6 +20,8 @@
         unstable.rustdesk-flutter
         firefox-devedition
         signal-desktop
+        kdePackages.partitionmanager
+        obs-studio
       ];
     };
 }

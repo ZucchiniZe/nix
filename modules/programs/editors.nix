@@ -51,6 +51,7 @@
             space.space = "file_picker";
             space.w = ":w";
             space.q = ":q";
+            space."=" = ":format";
             esc = [
               "collapse_selection"
               "keep_primary_selection"
