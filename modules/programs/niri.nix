@@ -55,7 +55,30 @@
           focus-follows-mouse.max-scroll-amount = "10%";
           warp-mouse-to-focus.enable = true;
         };
-        # layout.
+        layout = {
+          focus-ring.enable = false;
+          border = {
+            enable = true;
+            active.color = "#42a4b5";
+          };
+          always-center-single-column = true;
+          tab-indicator.width = 10;
+        };
+        window-rules = [
+          {
+            clip-to-geometry = true;
+            geometry-corner-radius =
+              let
+                r = 8.0;
+              in
+              {
+                top-left = r;
+                top-right = r;
+                bottom-left = r;
+                bottom-right = r;
+              };
+          }
+        ];
         binds = {
           "${hyper}+R".action.spawn = [ "firefox-devedition" ];
           "Mod+Shift+Comma" = {

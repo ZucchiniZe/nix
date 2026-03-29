@@ -22,6 +22,7 @@
         signal-desktop
         kdePackages.partitionmanager
         obs-studio
+        obsidian
       ];
     };
 }
