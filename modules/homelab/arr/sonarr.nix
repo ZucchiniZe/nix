@@ -9,16 +9,25 @@
     {
       options.homelab.services.${service} = {
         enable = lib.mkEnableOption "enable sonarr";
+        port = lib.mkOption {
+          type = lib.types.int;
+          default = 8989;
+        };
+        dataDir = lib.mkOption {
+          type = lib.types.path;
+          default = "/var/lib/sonarr";
+        };
       };
       config = lib.mkIf cfg.enable {
         services.${service} = {
           enable = true;
-
+          port = cfg.port;
+          dataDir = cfg.dataDir;
         };
 
         services.caddy.virtualHosts.${fullUrl}.extraConfig = ''
-          					reverse_proxy http://
-          				'';
+          reverse_proxy http://localhost:${toString cfg.port}
+          '';
       };
     };
 }

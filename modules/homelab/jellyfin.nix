@@ -9,10 +9,15 @@
     {
       options.homelab.services.${service} = {
         enable = lib.mkEnableOption "enable jellyfin";
+        port = lib.mkOption {
+          type = lib.types.int;
+          default = 8096;
+        };
       };
       config = lib.mkIf cfg.enable {
         services.jellyfin = {
           enable = true;
+          port = cfg.port;
           # transcoding.enableHardwareEncoding = true;
           # hardwareAcceleration = {
           #   enable = true;
@@ -21,7 +26,7 @@
         };
 
         services.caddy.virtualHosts.${fullUrl}.extraConfig = ''
-          	reverse_proxy http://localhost:8096
+          reverse_proxy http://localhost:${toString cfg.port}
         '';
       };
     };

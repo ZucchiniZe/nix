@@ -39,7 +39,7 @@
           '';
 
           virtualHosts = {
-            "alex.${config.homelab.baseDomain}".extraConfig = ''
+            "hello.${config.homelab.baseDomain}".extraConfig = ''
               respond	"hello!"
             '';
           };
