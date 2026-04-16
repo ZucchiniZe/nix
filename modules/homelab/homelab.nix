@@ -12,6 +12,9 @@
         monitoring
         ups
         jellyfin
+        sonarr
+        radarr
+        prowlarr
       ];
 
       options.homelab = {

@@ -21,13 +21,13 @@
       config = lib.mkIf cfg.enable {
         services.${service} = {
           enable = true;
-          port = cfg.port;
+          settings.server.port = cfg.port;
           dataDir = cfg.dataDir;
         };
 
         services.caddy.virtualHosts.${fullUrl}.extraConfig = ''
           reverse_proxy http://localhost:${toString cfg.port}
-          '';
+        '';
       };
     };
 }
