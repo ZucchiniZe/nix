@@ -17,7 +17,7 @@
     homelab.services.ups.enable = true;
     homelab.services.monitoring.enable = true;
     homelab.services.jellyfin.enable = true;
-    homelab.services.qbitorrent.enable = true;
+    homelab.services.qbittorrent.enable = true;
     homelab.services.sonarr.enable = true;
     homelab.services.radarr.enable = true;
     homelab.services.prowlarr.enable = true;

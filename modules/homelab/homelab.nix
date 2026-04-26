@@ -12,7 +12,7 @@
         monitoring
         ups
         jellyfin
-        qbitorrent
+        qbittorrent
         sonarr
         radarr
         prowlarr

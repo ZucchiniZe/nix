@@ -31,33 +31,35 @@
         };
       };
 
-      config = lib.mkMerge [
-        (lib.optionalAttrs cfg.enable {
-          services.${service} = {
-            enable = true;
-            webuiPort = cfg.port;
-            profileDir = cfg.dataDir;
-          };
+      config = lib.mkIf cfg.enable (
+        lib.mkMerge [
+          {
+            services.${service} = {
+              enable = true;
+              webuiPort = cfg.port;
+              profileDir = cfg.dataDir;
+            };
 
-          services.caddy.virtualHosts = {
-            ${fullUrl}.extraConfig = ''
-              reverse_proxy http://localhost:${toString cfg.port}
-            '';
-          };
-        })
+            services.caddy.virtualHosts = {
+              ${fullUrl}.extraConfig = ''
+                reverse_proxy http://localhost:${toString cfg.port}
+              '';
+            };
+          }
 
-        (lib.optionalAttrs cfg.qui.enable {
-          services.qui = {
-            enable = true;
-            settings.port = cfg.qui.port;
-          };
+          (lib.mkIf cfg.qui.enable {
+            services.qui = {
+              enable = true;
+              settings.port = cfg.qui.port;
+            };
 
-          services.caddy.virtualHosts = {
-            "qui.${config.homelab.baseDomain}".extraConfig = ''
-              	reverse_proxy http://localhost:${toString cfg.qui.port}
-            '';
-          };
-        })
-      ];
+            services.caddy.virtualHosts = {
+              "qui.${config.homelab.baseDomain}".extraConfig = ''
+                	reverse_proxy http://localhost:${toString cfg.qui.port}
+              '';
+            };
+          })
+        ]
+      );
     };
 }
