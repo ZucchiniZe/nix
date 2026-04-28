@@ -51,7 +51,10 @@
             services.qui = {
               enable = true;
               settings.port = cfg.qui.port;
+              secretFile = config.sops.secrets."qui/session".path;
             };
+
+            sops.secrets."qui/session".owner = "qui";
 
             services.caddy.virtualHosts = {
               "qui.${config.homelab.baseDomain}".extraConfig = ''
