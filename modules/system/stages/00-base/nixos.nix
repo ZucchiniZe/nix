@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   lib,
   ...
 }:
@@ -54,6 +55,7 @@
     nix.extraOptions = ''
       warn-dirty = false
       keep-outputs = true
+      !include ${config.sops.secrets."nix-gh-token".path}
     '';
 
     networking = {

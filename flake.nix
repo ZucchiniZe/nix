@@ -11,7 +11,7 @@
   };
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix/v25.11";
+    catppuccin.url = "github:catppuccin/nix";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko = {
       url = "github:nix-community/disko/latest";
@@ -27,7 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";

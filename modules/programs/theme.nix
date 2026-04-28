@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    catppuccin.url = "github:catppuccin/nix/v25.11";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   flake.modules.homeManager.theme = {

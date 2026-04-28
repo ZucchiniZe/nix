@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.matcha =
-    { lib, pkgs, config, ... }:
+    {
+      lib,
+      pkgs,
+      config,
+      ...
+    }:
     {
       boot.initrd.availableKernelModules = [
         "nvme"
@@ -12,9 +17,14 @@
       ];
       # add nividia module for early kernel mode setting so we hit native resolution
       # as soon as we can
-      boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+      boot.initrd.kernelModules = [
+        "nvidia"
+        "nvidia_modeset"
+        "nvidia_uvm"
+        "nvidia_drm"
+      ];
       # use the latest unstable kernel for the ABSOLUTE BLEEDING EDGE
-      boot.kernelPackages = pkgs.unstable.linuxPackages_6_19;
+      boot.kernelPackages = pkgs.unstable.linuxPackages_7_0;
       boot.kernelModules = [
         "kvm-amd"
         "mt7921e"
