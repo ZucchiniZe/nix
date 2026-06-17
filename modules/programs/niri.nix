@@ -46,6 +46,7 @@
       # be placed in the configuration.nix for that machine
       programs.niri.settings = {
         includes = [ { path = "${pkgs.niri.doc}/share/doc/niri/default-config.kdl"; } ];
+        spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
         xwayland-satellite = {
           enable = true;
           path = lib.getExe pkgs.xwayland-satellite-unstable;
@@ -139,11 +140,6 @@
             ];
           };
         };
-      };
-
-      programs.noctalia-shell = {
-        enable = true;
-        systemd.enable = true;
       };
     };
 
