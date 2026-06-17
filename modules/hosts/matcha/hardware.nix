@@ -24,7 +24,7 @@
         "nvidia_drm"
       ];
       # use the latest unstable kernel for the ABSOLUTE BLEEDING EDGE
-      boot.kernelPackages = pkgs.unstable.linuxPackages_7_0;
+      boot.kernelPackages = pkgs.unstable.linuxKernel.packages.linux_7_1;
       boot.kernelModules = [
         "kvm-amd"
         "mt7921e"
@@ -38,7 +38,7 @@
       hardware.graphics.enable = true;
       hardware.nvidia = {
         # enable beta drivers
-        package = config.boot.kernelPackages.nvidiaPackages.beta;
+        package = config.boot.kernelPackages.nvidiaPackages.latest;
         open = true;
         modesetting.enable = true;
         nvidiaSettings = true;

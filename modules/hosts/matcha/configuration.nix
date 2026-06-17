@@ -65,7 +65,10 @@
           });
         })
       ];
-      environment.systemPackages = [ pkgs.wineWow64Packages.staging_11 pkgs.unstable.winetricks ];
+      environment.systemPackages = [
+        # pkgs.wineWow65Packages.staging_11
+        pkgs.unstable.winetricks
+      ];
 
       # wireless protocols
       networking.networkmanager.enable = true;

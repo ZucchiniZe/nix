@@ -32,7 +32,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
-      url = "github:sodiboo/niri-flake/very-refactor";
+      url = "github:zucchinize/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nirinit = {
@@ -40,18 +40,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/nix-darwin-25.11";
+      url = "github:nix-darwin/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs-darwin";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     packages = {

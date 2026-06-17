@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     niri = {
-      url = "github:sodiboo/niri-flake/very-refactor";
+      url = "github:zucchinize/niri-flake/very-refactor";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nirinit = {
@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
+      url = "github:noctalia-dev/noctalia/legacy-v4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     silentSDDM = {
