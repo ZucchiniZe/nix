@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     silentSDDM = {
@@ -20,8 +20,14 @@
   };
 
   flake-file.nixConfig = {
-    extra-substituters = [ "https://niri.cachix.org" ];
-    extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+    extra-substituters = [
+      "https://niri.cachix.org"
+      "https://noctalia.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
   };
 
   flake.modules.homeManager.niri =
@@ -31,9 +37,8 @@
       noctaliaSpawn =
         commands:
         [
-          "noctalia-shell"
-          "ipc"
-          "call"
+          "noctalia"
+          "msg"
         ]
         ++ commands;
     in
@@ -42,11 +47,13 @@
         inputs.noctalia.homeModules.default
       ];
 
+      programs.noctalia.enable = true;
+
       # all machines that use niri will share this config, separate config should
       # be placed in the configuration.nix for that machine
       programs.niri.settings = {
         includes = [ { path = "${pkgs.niri.doc}/share/doc/niri/default-config.kdl"; } ];
-        spawn-at-startup = [ { command = [ "noctalia-shell" ]; } ];
+        spawn-at-startup = [ { command = [ "noctalia" ]; } ];
         xwayland-satellite = {
           enable = true;
           path = lib.getExe pkgs.xwayland-satellite-unstable;
@@ -79,42 +86,47 @@
                 bottom-right = r;
               };
           }
+          {
+            matches = [ { app-id = "dev.noctalia.Noctalia.Settings"; } ];
+            open-floating = true;
+            default-column-width.fixed = 1080;
+            default-window-height.fixed = 920;
+          }
         ];
         binds = {
           "${hyper}+R".action.spawn = [ "firefox-devedition" ];
           "Mod+Shift+Comma" = {
             hotkey-overlay.title = "Noctalia: Settings";
             action.spawn = noctaliaSpawn [
-              "settings"
-              "toggle"
+              "settings-toggle"
             ];
           };
           "Mod+Shift+C" = {
             hotkey-overlay.title = "Noctalia: Control Center";
             action.spawn = noctaliaSpawn [
-              "controlCenter"
-              "toggle"
+              "panel-toggle"
+              "control-center"
             ];
           };
           # "Mod+T" = { hotkey-overlay.title = "Terminal" };
           "Mod+D" = {
             hotkey-overlay.title = "Noctalia: Launcher";
             action.spawn = noctaliaSpawn [
+              "panel-toggle"
               "launcher"
-              "toggle"
             ];
           };
           "Mod+Space" = {
             hotkey-overlay.title = "Noctalia: Launcher";
             action.spawn = noctaliaSpawn [
+              "panel-toggle"
               "launcher"
-              "toggle"
             ];
           };
           "Super+Alt+L" = {
             hotkey-overlay.title = "Noctalia: Lock Screen";
             action.spawn = noctaliaSpawn [
-              "lockScreen"
+              "session"
               "lock"
             ];
           };
@@ -122,7 +134,7 @@
             allow-when-locked = true;
             action.spawn = noctaliaSpawn [
               "media"
-              "playPause"
+              "toggle"
             ];
           };
           "XF86AudioNext" = {
@@ -156,7 +168,10 @@
       niri-flake.cache.enable = true;
 
       # for monitor brightness control (also remember to configure i2c)
-      environment.systemPackages = [ pkgs.ddcutil ];
+      environment.systemPackages = [
+        pkgs.ddcutil
+        inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+      ];
 
       environment.pathsToLink = [
         "/share/applications"

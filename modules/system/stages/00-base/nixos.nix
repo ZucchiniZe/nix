@@ -58,7 +58,6 @@
     '';
     # sops isn't included yet so this doesn't work, just going to leave this as
     # a relic cuz i don't want to clean it up rn
-    # !include ${config.sops.secrets."nix-gh-token".path}
 
     networking = {
       # assume all will use DHCP, might change in the future

@@ -11,7 +11,7 @@
   };
 
   inputs = {
-    catppuccin.url = "github:catppuccin/nix";
+    catppuccin.url = "github:catppuccin/nix/release-26.05";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     disko = {
       url = "github:nix-community/disko/latest";
@@ -51,7 +51,7 @@
     nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-26.05-darwin";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     noctalia = {
-      url = "github:noctalia-dev/noctalia/legacy-v4";
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     packages = {
