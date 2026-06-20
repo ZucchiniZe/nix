@@ -7,6 +7,7 @@
     {
       imports = with inputs.self.modules.nixos; [
         limine-boot
+        cachyos-kernel
         system-desktop
         niri
         plasma
