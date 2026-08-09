@@ -17,6 +17,7 @@
     {
       imports = with inputs.self.modules.nixos; [ ];
       environment.systemPackages = with pkgs; [
+        baobab
         unstable.rustdesk-flutter
         firefox-devedition
         signal-desktop
