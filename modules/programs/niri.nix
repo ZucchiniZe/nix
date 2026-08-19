@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     niri = {
-      url = "github:zucchinize/niri-flake/very-refactor";
+      url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nirinit = {
