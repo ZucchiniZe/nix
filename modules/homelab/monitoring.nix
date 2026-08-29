@@ -52,6 +52,10 @@
             analytics.feedback_links_enabled = false;
             analytics.reporting_enabled = false;
 
+            # hardcoding the secret key because its all internal
+            # with 26.05 you now have to manually provide the secret key
+            security.secret_key = "SW2YcwTIb9zpOOhoPsMm";
+
             server = {
               http_addr = hostAddress;
               http_port = cfg.grafana.port;
