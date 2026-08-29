@@ -5,6 +5,8 @@
       programs.neovim = {
         enable = true;
         vimAlias = true;
+        withRuby = false;
+        withPython3 = false;
         # plugins = [ pkgs.vimPlugins.nvim-tree-lua ];
       };
 
