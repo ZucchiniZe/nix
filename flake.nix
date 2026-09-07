@@ -35,6 +35,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
+    negpy = {
+      url = "github:marcinz606/NegPy";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     niri = {
       url = "github:epireyn/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -67,6 +67,7 @@
           image_path: guid(eb7bc0d5-50cd-497c-a082-d261afa0b5da):/efi/Microsoft/Boot/bootmgfw.efi
       '';
 
+      boot.supportedFilesystems = [ "nfs" ];
       fileSystems = {
         "/" = {
           device = "/dev/disk/by-label/nixos";
@@ -84,10 +85,20 @@
             "dmask=0077"
           ];
         };
+        "/mnt/playtime/10-personal" = {
+          device = "10.1.1.15:/volume1/10-personal";
+          fsType = "nfs";
+          options = [
+            "x-systemd.automount"
+            "noauto"
+          ];
+        };
       };
 
       swapDevices = [
-        { device = "/dev/disk/by-label/swap"; }
+        { device = "/dev/disk/by-label/bigswap"; }
       ];
+
+      boot.zswap.enable = true;
     };
 }
