@@ -16,6 +16,7 @@
         sonarr
         radarr
         prowlarr
+        linkding
       ];
 
       options.homelab = {

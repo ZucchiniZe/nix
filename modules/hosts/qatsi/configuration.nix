@@ -22,6 +22,7 @@
     homelab.services.sonarr.enable = true;
     homelab.services.radarr.enable = true;
     homelab.services.prowlarr.enable = true;
+    homelab.services.linkding.enable = true;
     # not working yet
     # homelab.services.headscale.enable = true;
 
