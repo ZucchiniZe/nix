@@ -21,12 +21,13 @@
 			config = lib.mkIf cfg.enable {
 				services.${service} = {
 					enable = true;
+					port = cfg.port;
 					dataDir = cfg.dataDir;
 					database.type = "sqlite";
 				};
 
 				services.caddy.virtualHosts.${fullUrl}.extraConfig = ''
-					reverse_proxy http://localhost:${cfg.port}
+					reverse_proxy http://localhost:${toString cfg.port}
 				'';
 			};
 		};
