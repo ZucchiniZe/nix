@@ -14,7 +14,7 @@
     {
       imports = with inputs.self.modules.darwin; [ ];
       environment.systemPackages = with pkgs; [
-      	blender
+      	unstable.blender
       ];
     };
 

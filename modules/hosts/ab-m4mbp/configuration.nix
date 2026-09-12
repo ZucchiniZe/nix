@@ -13,7 +13,7 @@
         system-desktop
       ];
 
-      programs.ssh.matchBlocks =
+      programs.ssh.settings =
         let
           rootUser = host: {
             user = "root";

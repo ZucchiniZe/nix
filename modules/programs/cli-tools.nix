@@ -5,6 +5,7 @@ let
       environment.systemPackages = with pkgs; [
         bat
         btop-cuda
+        unstable.devenv
         eza
         fastfetch
         fd
