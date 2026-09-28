@@ -9,6 +9,7 @@
         "publii"
         "ghostty"
         "touchdesigner"
+        "helium-browser"
       ];
     };
   };
